@@ -3,7 +3,7 @@ include 'php/connection.php';
 define("TITLE", "Benvenuto su Quinidy");
 session_start();
 if (isset($_SESSION['nickname'])) {
-	header("Location: pages/mainpage.php");
+	header("Location: pages/mainpage.php"); 
 }
 ?>
 
