@@ -1,0 +1,282 @@
+/* Quinidy Classic Quiz Style */
+@font-face {
+   font-family: 'Martian Mono', monospace;
+   src: url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@600&display=swap');
+}
+/*--------------------------------------------------------------margin: top-right-bottom-left*/
+/* Title style */
+h4,h3{
+	text-shadow: 2px 1px 4px black;
+	font-weight: bold;
+	font-size: 45px;
+}
+h2{font-weight: bold;}
+.start-screen, .quiz-screen, .end-screen{text-align: center;}
+/* General screen style */
+.layer {
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+	animation: fadeIn 0.6s ease forwards;
+	border-radius: 25px;
+	margin: 40px auto;
+	background: white;
+	max-width: 350px;
+	padding: 23px;
+}
+/* Hiding screen style */
+.start-screen.hide, .quiz-screen.hide, .end-screen.hide{ display: none; }
+/*--------------------------------------------------------------*/
+/* Question counter style */
+.quiz-screen .counter-num{
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+	background-color: white;
+	background-size: 50px;
+	border-radius: 10px;
+	font-weight: bold;
+	max-height: auto;
+	display: inline;
+	max-width: 54px;
+	font-size: 25px;
+	color: #ff4d4d;
+	padding: 6px;
+}
+/*--------------------------------------------------------------*/
+/* Timer style */
+.quiz-screen .timer{
+	background: radial-gradient(590px at 8.2% 13.8%, rgb(18, 35, 60) 0%, rgb(187, 187, 187) 90%);
+	font-family: 'Martian Mono', monospace;
+	text-shadow: 1px 1px 1px black;
+	background-size: 50px;
+	border-style: dashed;
+	border-radius: 50%;
+	font-weight: bold;
+	display: inline;
+	font-size: 35px;
+	height: 50px;
+	width: 50px;
+	color: white;
+	padding: 5px;
+}
+/*--------------------------------------------------------------*/
+/* Question text style */
+.quiz-screen .question{
+	background: rgb(255,255,255);
+	background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(237,245,246,1) 50%, rgba(170,216,237,1) 100%, rgba(140,252,255,1) 100%);
+	animation: fadeIn 0.6s ease forwards;
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+	box-shadow: 1x 1px 3px black;
+	border-radius: 25px;
+	margin-bottom: 10px;
+	margin-right: 30px;
+	margin-left: 30px;
+	padding: 20px 20px;
+	font-weight: bold;
+	font-size: 35px;
+	color: black;
+}
+/*--------------------------------------------------------------*/
+/* Options style */
+.quiz-screen .options{
+	display: grid;
+    grid-auto-flow: column;
+    grid-template: ' . . ' 60px
+                   ' . . ' 60px / 1fr 1fr;   
+}
+.quiz-screen .options .option{
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+	animation: fadeIn 0.8s ease forwards;
+	background-color: white;
+	border-radius: 25px;
+	margin-bottom: 10px;
+	position: relative;
+	margin-right: 40px;
+	margin-left: 40px;
+	padding-top: 6px;
+	overflow: hidden;
+	cursor: pointer;
+	font-size: 25px;
+	color: black;
+	opacity: 1;
+}
+/* Little option animation*/
+.quiz-screen .options .option:active{ transform: translateY(4px); }
+
+.quiz-screen .options .option:hover {
+	box-shadow: yellow 0px 0px 8px;
+}
+/* Option style when other is clicked */
+.quiz-screen .options .option.disabled{
+	pointer-events: none;
+}
+/* Option style when answer is wrong */
+.quiz-screen .options .option.wrong{
+	text-shadow: 1px 1px 1px black;
+	background-color: #FF3131;
+	box-shadow: none;
+	color: white;
+}
+/* Option style when answer is correct */
+.quiz-screen .options .option.correct{
+	text-shadow: 1px 1px 1px black;
+	background-color: #0BDA51;
+	box-shadow: none;
+	color: white;
+}
+/*--------------------------------------------------------------*/
+/* Square counter answered */
+.quiz-screen .counter-bar div{
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+	background-color: white;
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+}
+/* Square counter correct */
+.quiz-screen .counter-bar div.correct{
+	box-shadow: 0px 0px 1px black;
+	background-color: #0BDA51;
+}
+/* Square counter wrong */
+.quiz-screen .counter-bar div.wrong{
+	box-shadow: 0px 0px 1px black;
+	background-color: #FF3131;
+}
+/*--------------------------------------------------------------*/
+/* End screen with results */
+.end-screen{
+	text-align: center;
+}
+/* Title end screen */
+.end-screen h1{
+	line-height: 42px;
+	font-size: 36px;
+}
+/* Table end screen */
+table{
+	border-collapse: collapse;
+	vertical-align: center;
+	padding: auto;
+	margin: auto;
+}
+table td{
+	vertical-align: center;
+	padding: 8px 15px;
+	font-weight: 500;
+	font-size: 20px;
+	color: black;
+	width: 50%;
+}
+.al{
+	text-align: left;
+	font-size: 22px;
+}
+.ar{
+	text-align: right;
+	font-size: 22px;
+}
+/*--------------------------------------------------------------*/
+/* Smartphone screen: options in column*/
+@media screen and (max-width: 575px) {
+	.quiz-screen .options{ display: inline; }
+	
+	.quiz-screen .question{ font-size: 25px; }
+	
+	.four-title h3 {font-size:45px; text-align:center;}
+}
+/* Hide element */
+.hiding{ display: none; }
+
+/* Animation */
+@keyframes fadeIn{
+	0%{ opacity:0; }
+	
+	100%{ opacity: 1; }
+}
+/*--------------------------------------------------------------*/
+/* 4F1P Style & Discovery Quiz Style */
+/* Level selector*/
+.btn-four{
+	margin-left:5px;
+	margin-right:5px;
+	margin-bottom:10px;
+}
+/* Question box */
+.question-box{
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+	animation: fadeIn 0.6s ease forwards;
+	border-radius: 25px;
+	margin: 10px auto;
+	background: white;
+	max-width: 450px;
+	padding: 23px;
+	width: 100%;
+	height: auto;
+}
+.question-img{
+	max-width: 100%;
+    height: auto;
+}
+/* Answer displayed*/
+.your-word{
+	text-transform: uppercase;
+	margin-top: 10px;
+	font-weight: bold;
+	font-size: 35px;
+	color: black;
+	margin-bottom:3px;
+}
+.your-word.correct{
+	font-weight: bold;
+	font-size: 35px;
+	color: #0BDA51;
+}
+.your-word.wrong{
+	font-weight: bold;
+	font-size: 35px;
+	color: #FF3131;
+}
+/* Input */
+.input-bar{
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+	animation: fadeIn 0.9s ease forwards;
+	max-width: 100%;
+    height: auto;
+	border-radius: 20px;
+	border-color: green;
+	border-width: 4px;
+	border-style: solid;
+	text-align: center;
+	font-size:30px;
+	transform: translateX(20px);
+}
+.input-bar:focus, input:focus{
+    outline: none;
+}
+.apply{
+	transform: translateX(-30px);
+	font-size:30px;
+	background-color:green;
+	border-radius: 20px;
+	color:white;
+	padding-top:7px;
+	padding-left:10px;
+	padding-right:10px;
+	
+}
+.apply.disabled{
+	pointer-events: none;
+}
+
+.info{
+	margin-top:24px;
+	margin-bottom:15px;
+}
+.context{
+	font-size: 30px;
+}
+
+
+
+
+
+
+

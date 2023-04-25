@@ -1,0 +1,15 @@
+@font-face {
+    font-family: "Quinidy";
+    src: url(Nunito-Regular.ttf);
+	font-style: normal;
+}
+@font-face {
+    font-family: "Quinidy";
+    src: url(Nunito-Bold.ttf);
+    font-weight: bold;
+	font-style: normal;
+}
+body{font-family: "Quinidy"; font-family: "Quinidy"; font-style: normal;}
+h1{font-family: "Quinidy"; font-style: normal; font-weight: bold;}
+#button{font-family: "Quinidy"; font-style: normal; font-weight: bold;}
+#title{font-family: "Quinidy"; font-style: normal; font-weight: bold;}
