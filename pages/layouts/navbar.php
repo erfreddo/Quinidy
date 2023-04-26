@@ -62,10 +62,23 @@
 				?>
 			</li>
 			<li class="nav-item active">
-				<form class="d-flex">		
+				<?php
+				if (TITLE=="Benvenuto su Quinidy"){ $link = "'pages/userPublic.php?nickname='+document.getElementById('searchbar').value;"; }
+				else { $link = "'userPublic.php?nickname='+document.getElementById('searchbar').value;"; }
+				?>
+				<form class='d-flex' onSubmit='return submitForm()' method='GET'>
 					<input class="form-control rounded-pill me-2 mt-2 mb-2 ms-2" type="search" placeholder="Cerca utenti" aria-label="Cerca" id="searchbar">
-					<a role="button" class="btn btn-success rounded-pill my-2 me-3 px-3" type="submit" id="button"><i class="bi bi-search"></i></a>
+					<button class="btn btn-success rounded-pill my-2 me-3 px-3" type="submit" id="button" role="button" ><i class="bi bi-search"></i></button>
 				</form>
+				<?php
+				echo "
+				<script>
+				function submitForm() {
+					location.href=".$link."
+					return false;
+				}
+				</script>"
+				?>
 			</li>
 		</ul>
 	</div>
