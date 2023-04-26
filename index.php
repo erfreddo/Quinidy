@@ -1,4 +1,4 @@
-<?php
+<?php // Quinidy landing page
 include 'php/connection.php';
 define("TITLE", "Benvenuto su Quinidy");
 session_start();
