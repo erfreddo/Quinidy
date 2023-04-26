@@ -13,7 +13,9 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	</head>
 	<body class="all-bg green-bg d-flex flex-column min-vh-100 text-center" onload="showReset()">
+	
 		<?php include("../pages/layouts/navbar.php") ?>
+		
 		<div class="four-title d-flex justify-content-center">
 			<h3 class="text-white" style="margin-top:110px;">4 Foto 1 Parola</h3>
 		</div>
@@ -68,9 +70,12 @@
 				<button type="submit" class="btn btn-hover color-8 rounded-pill px-2" onclick="resetQuiz();" id="reset" name="submit">Resetta</button>
 			</form>
 		</div>
+		
 		<script src="../src/js/questions.js"></script>
 		<script src="../src/js/fourQuizScript.js"></script>
+		
 		<script>
+			// Only alphanumeric characters allowed in input field
 			$('input').on('keypress', function (event) {
 				var regex = new RegExp("^[a-zA-Z0-9]+$");
 				var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
@@ -79,15 +84,17 @@
 				   return false;
 				}
 			});
-
-			var input = document.getElementById("input-word");
+			// User can apply the word by pressing Enter
+			var input = document.getElementById("input-word"); 
 			input.addEventListener("keypress", function(event) {
-			  if (event.key === "Enter") {
+				if (event.key === "Enter") {
 				event.preventDefault();
 				document.getElementById("apply").click();
-			  }
+				}
 			});
 		</script>
+		
 		<?php include("../pages/layouts/footer.php") ?>
+		
 	</body>
 </html>

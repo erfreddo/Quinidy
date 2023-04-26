@@ -18,9 +18,11 @@
 		<link rel="stylesheet" type="text/css" href="../src/css/quizStyle.css">
 	</head>
 	<body class="all-bg blue-bg d-flex flex-column min-vh-100 text-center">
+	
 		<?php include("../pages/layouts/navbar.php") ?>
 		
 		<h3 class="text-white margin-main" style="text-align:center;">Classic Quiz <i id="categoryLogo" class="bi bi-book-half" style="color:white;"></i></h3>
+		
 		<!-- Start Screen -->
 		<div class="layer start-screen">
 			<h1>Regole</h1><br>
@@ -63,6 +65,7 @@
 			</table>
 			<button type="button" class="btn-hover color-3 rounded-pill submit pe-4 ps-4 mt-5" onclick="startQuiz()">Inizia</button>
 		</div>
+		
 		<!-- Quiz Screen -->
 		<div class="quiz-screen hide">
 			<div class="counter-bar"></div>

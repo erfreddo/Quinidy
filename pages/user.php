@@ -5,7 +5,7 @@
 	if (!isset($_SESSION['nickname'])){ header("Location: ../index.php"); }
 	$nickname = $_SESSION['nickname'];
 	
-	//Update points in database
+	// Save points from database
 	$sql = "SELECT art_points,cinema_points,world_points,music_points,science_points,history_points,sport_points,four_levels,discovery_levels
 	FROM utenti WHERE nickname = '".$_SESSION['nickname']."'";
 	$result = $conn->query($sql);
@@ -29,22 +29,22 @@
 			} 
 		}
 	}
-	//Load profile picture from database
+	// Load profile picture from database
 	$sql = "SELECT propic FROM utenti WHERE nickname = '".$_SESSION['nickname']."'";
 	$result = $conn->query($sql);
 	if($result){
-		//Save the link
+		// Save the link
 		while($row = $result->fetch_assoc()) {
 			if ($result->num_rows > 0) { 
 				$GLOBALS['propic'] = $row['propic']; 
 			}
 		}
-		//If the link is not an image set the default profile picture
+		// If the link is not an image set the default profile picture
 		if (substr($propic, -4)!==".png" and substr($propic, -4)!==".jpg" and substr($propic, -5)!==".jpeg") {
 			$propic = "https://i.imgur.com/V4RclNb.png";
 		}
 	}
-	//Update profile picture from form
+	// Update profile picture from modal form
 	if (isset($_POST['submit'])) {
 		$queryP = "UPDATE utenti SET propic = '". $_POST['linkpic'] ."' WHERE nickname = '".$_SESSION['nickname']."'";
 		$resultP = mysqli_query($conn, $queryP);
@@ -59,6 +59,7 @@
 		<script src="../src/js/questions.js"></script>
 	</head>
 	<body class="all-bg green-bg d-flex flex-column min-vh-100">
+	
 		<?php include("../pages/layouts/navbar.php") ?>
 		
 		<section class="py-1 margin-main">
@@ -220,7 +221,7 @@
 					<form action="" method="POST" class="login-form">
 						<div class="modal-body">
 							<div class="form-group">
-								<span class="mb-3">Inserisci un link di un'immagine:</span>
+								<span class="mb-3">Inserisci il link di un'immagine:</span>
 								<input type="url" class="form-control rounded-left" name="linkpic" placeholder="Link" required>
 							</div>
 						</div>
@@ -232,6 +233,8 @@
 				</div>
 			</div>
 		</div>
+		
 		<?php include("../pages/layouts/footer.php") ?>
+		
 	</body>
 </html>

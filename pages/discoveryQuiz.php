@@ -71,9 +71,12 @@
 				<button type="submit" class="btn btn-hover color-8 rounded-pill px-2" onclick="resetQuiz();" id="reset" name="submit">Resetta</button>
 			</form>
 		</div>
+		
 		<script src="../src/js/questions.js"></script>
 		<script src="../src/js/discoveryQuizScript.js"></script>
+		
 		<script>
+			// Only alphanumeric characters (and space) allowed in input field
 			$('input').on('keypress', function (event) {
 				var regex = new RegExp("^[a-zA-Z0-9]+$+^\\s+$");
 				var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
@@ -82,7 +85,7 @@
 				   return false;
 				}
 			});
-
+			// User can apply the word by pressing Enter
 			var input = document.getElementById("input-word");
 			input.addEventListener("keypress", function(event) {
 			  if (event.key === "Enter") {
@@ -91,6 +94,8 @@
 			  }
 			});
 		</script>
+		
 		<?php include("../pages/layouts/footer.php") ?>
+		
 	</body>
 </html>

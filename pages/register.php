@@ -69,5 +69,6 @@
 		</section>	
 		
 		<?php include("../pages/layouts/footer.php") ?>
+		
 	</body>
 </html>
