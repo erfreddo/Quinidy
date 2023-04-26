@@ -56,7 +56,7 @@ function getQuestion() {
     questionImg.src = qSelected.img; // Set the image
 	answer = qSelected.answer;
 	yourWord.innerHTML=fieldWord(answer.length); // Display dashes with word lenght under the image
-	applyButton.setAttribute("onclick", "getResult(answer)"); // Apply button of input field shows the result when clicked
+	applyButton.setAttribute("onclick", "getResult(answer)"); // "Apply" button in input field shows the result when clicked
 	
 }
 // Function that generate n dashes
@@ -141,15 +141,14 @@ window.addEventListener("DOMContentLoaded", function myFunction(e){
 		else if(i-1 > lastLevel){
 			newBtn.classList.add("disabled");
 		}
-		
 		document.querySelector('.level-box').appendChild(newBtn);
 	}
 });
-
+// "Apply" button sets the word displayed below image = word in input field
 applyButton.addEventListener('click', function() { 
 	yourWord.innerHTML = inputWord.value.trim();
 })
 
-applyButton.addEventListener('click', function() { 
+document.getElementById('reset').addEventListener('click', function() { 
 	yourWord.innerHTML = inputWord.value.trim();
 })
