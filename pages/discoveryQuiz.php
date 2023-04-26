@@ -19,7 +19,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 		<style>.quiz-screen img { width:500px; height:auto; }</style>
 	</head>
-	<body class="all-bg red-bg d-flex flex-column min-vh-100" onload="showReset()">
+	<body class="all-bg red-bg d-flex flex-column min-vh-100 text-center" onload="showReset()">
 		<?php include("../pages/layouts/navbar.php") ?>
 		<div class="four-title d-flex justify-content-center">
 			<h4 class="text-white" style="margin-top:110px;">Discovery Quiz</h4>

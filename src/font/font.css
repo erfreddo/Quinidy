@@ -1,15 +1,49 @@
 @font-face {
-    font-family: "Quinidy";
+    font-family: "QuinidyNormal";
     src: url(Nunito-Regular.ttf);
 	font-style: normal;
+	font-weight: normal;
 }
 @font-face {
-    font-family: "Quinidy";
+    font-family: "QuinidyBold";
     src: url(Nunito-Bold.ttf);
     font-weight: bold;
 	font-style: normal;
 }
-body{font-family: "Quinidy"; font-family: "Quinidy"; font-style: normal;}
-h1{font-family: "Quinidy"; font-style: normal; font-weight: bold;}
-#button{font-family: "Quinidy"; font-style: normal; font-weight: bold;}
-#title{font-family: "Quinidy"; font-style: normal; font-weight: bold;}
+@font-face {
+	font-family: "QuinidyExtraBold";
+	src: url(Nunito-ExtraBold.ttf);
+	font-weight: extra-bold;
+}
+body,h5{
+	font-family: "QuinidyNormal";
+	font-family: "QuinidyNormal";
+	font-style: normal;
+	font-weight: normal;
+}
+h1,h3{
+	font-family: "QuinidyBold";
+	font-style: normal;
+	font-weight: bold;
+}
+.index-title{
+	font-family: "QuinidyExtraBold";
+	font-style: normal;
+	font-weight: extra-bold;
+	font-size:90px;
+}
+.question{
+	font-family: "QuinidyBold";
+	font-style: normal;
+	font-weight: bold;
+}
+#button{
+	font-family: "QuinidyExtraBold";
+	font-style: normal;
+	font-weight: bold;
+}
+#title{
+	font-family:"QuinidyBold";
+	font-style: normal;
+	font-weight: bold;
+}

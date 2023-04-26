@@ -1,4 +1,4 @@
-<?php //Quinidy User page
+<?php //Quinidy user page
 	session_start();
 	include '../php/connection.php';
 	define("TITLE","Il tuo Quinidy");
@@ -54,17 +54,9 @@
 <!DOCTYPE html>
 <html lang="it">
 	<head>
-		<title><?php echo TITLE?></title>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css"/>
-		<link rel="stylesheet" type="text/css" href="../src/font/font.css"/>
-		<link rel="stylesheet" type="text/css" href="../src/css/extra.css"/>
+		<?php include 'layouts/headTags.php'; ?>
 		<script src="../bootstrap/js/bootstrap.js"></script>
 		<script src="../src/js/questions.js"></script>
-		<style>
-		</style>
 	</head>
 	<body class="all-bg green-bg d-flex flex-column min-vh-100">
 		<?php include("../pages/layouts/navbar.php") ?>
@@ -215,7 +207,7 @@
 				</div>
 			</div>
 		</section>
-		<!-- modale -->
+		<!-- Modal -->
 		<div class="modal fade" id="Settings" tabindex="-1" role="dialog" aria-labelledby="SettingsLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">

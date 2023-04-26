@@ -20,6 +20,7 @@ let count=0;
 // Start quiz
 function startQuiz() {
 	if (document.getElementById('fl').innerHTML < q){
+		document.getElementById("back-button").style.display="inline";
 		startScreen.classList.add("hide"); 		// Hide start screen
 		quizScreen.classList.remove("hide"); 	// Show quiz screen
 		setGame(); 								// Set game values, import questions

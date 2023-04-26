@@ -50,7 +50,7 @@ if (TITLE == "Benvenuto su Quinidy") {
 						echo '<a role="button" class="btn btn-nav nav-link ms-3" href="mainpage.php">Home</a>';
 						echo '<a role="button" class="btn btn-nav nav-link ms-3" data-toggle="modal" data-target="#contactUsModal">Contatto</a>';
 						/* bottone con poco senso visto che il selettore di livello e il quiz sono fatti sulla stessa pagina*/
-						echo '<a class="btn btn-nav nav-link ms-3" role="button" id="back-button" style="display: none;"><i class="bi bi-arrow-bar-left"></i> Indietro</a>';
+						echo '<a class="btn btn-nav nav-link ms-3" role="button" id="back-button" style="display: none;" href=""><i class="bi bi-arrow-bar-left"></i> Indietro</a>';
 					}
 					?>
 				</div>
