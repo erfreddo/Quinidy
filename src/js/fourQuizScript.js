@@ -7,6 +7,9 @@ const quizScreen = document.querySelector(".quiz-screen");
 const endScreen = document.querySelector(".end-screen");
 const nextButton = document.getElementById("next");
 const imgNumber = document.getElementById("selected-level");
+const yourAnswer = document.getElementById("your-word");
+const inputBar = document.getElementById("input-word");
+const applyButton = document.getElementById("apply");
 
 // Variables
 let q=questionsFour.length;	// Number of questions selected
@@ -45,17 +48,18 @@ function setGame() {
 // Prepare questions and options
 function getQuestion() {
 	// Show random question
-	document.getElementById("input-word").focus();
-	document.getElementById("your-word").classList.remove("correct");
-	document.getElementById("your-word").classList.remove("wrong");
-	document.getElementById("input-word").disabled = false;
-	document.getElementById("apply").disabled = false;
-	document.getElementById("apply").classList.remove("disabled");
+	inputBar.focus();
+	yourAnswer.classList.remove("correct");
+	yourAnswer.classList.remove("wrong");
+	inputBar.disabled = false;
+	applyButton.disabled = false;
+	applyButton.classList.remove("disabled");
+	
     const qSelected = qList[imgNumber.innerHTML-1+count];
     questionImg.src = qSelected.img;
 	answer = qSelected.answer;
-	document.getElementById("your-word").innerHTML=fieldWord(answer.length);
-	document.getElementById("apply").setAttribute("onclick", "getResult(answer)");
+	yourAnswer.innerHTML=fieldWord(answer.length);
+	applyButton.setAttribute("onclick", "getResult(answer)");
 	
 }
 // Display dashes below image
@@ -69,25 +73,25 @@ function fieldWord(n){
 }
 // Show the result of question
 function getResult(answer) {
-    var yourWord = document.getElementById("your-word").innerHTML;
+    var yourWord = yourAnswer.innerHTML;
     // Check if the selected option is the answer in questions.js
 	if (yourWord===""){
-		document.getElementById("your-word").innerHTML=fieldWord(answer.length);
+		yourAnswer.innerHTML=fieldWord(answer.length);
 	}
     if (yourWord.toLowerCase() === answer.toLowerCase()) {
-        nextButton.classList.remove("hiding"); // Show next button after one is clicked
-		document.getElementById("input-word").value="";
-		document.getElementById("input-word").disabled = true;
-		document.getElementById("apply").classList.add("disabled");
-		document.getElementById("your-word").classList.remove("wrong");
-		document.getElementById("your-word").classList.add("correct");
+        nextButton.disabled = false; // Show next button after one is clicked
+		inputBar.value="";
+		inputBar.disabled = true;
+		applyButton.classList.add("disabled");
+		yourAnswer.classList.remove("wrong");
+		yourAnswer.classList.add("correct");
 		count++;
 		document.getElementById("four_levels").value = imgNumber.innerHTML-1+count;
 		document.getElementById('fl').innerHTML = imgNumber.innerHTML-1+count;
 	}
 	else{
-		document.getElementById("your-word").classList.remove("correct");
-		document.getElementById("your-word").classList.add("wrong");
+		yourAnswer.classList.remove("correct");
+		yourAnswer.classList.add("wrong");
 	}
 }
 
@@ -98,9 +102,9 @@ function nextQuestion() {
 	}
 	else { 
 		getQuestion();
-		document.getElementById("input-word").focus();
+		inputBar.focus();
 	}
-	nextButton.classList.add("hiding"); // Hide "next" button
+	nextButton.disabled = true; // Hide "next" button
 }
 
 // End of the game function
@@ -114,7 +118,7 @@ function resetQuiz(){
 	document.getElementById('fl').innerHTML = 0;
 	setTimeout(function(){ window.location.reload(); }, 200);
 }
-
+// Generate level buttons on start screen
 window.addEventListener("DOMContentLoaded", function myFunction(e){
 	let lastLevel = document.getElementById("fl").innerHTML;
 	for(let i = 1; i <= q; i++){
@@ -142,11 +146,11 @@ window.addEventListener("DOMContentLoaded", function myFunction(e){
 		document.querySelector('.level-box').appendChild(newBtn);
 	}
 });
-
+// Show your input text below the image
 document.getElementById('apply').addEventListener('click', function() { 
-	document.getElementById('your-word').innerHTML = document.getElementById('input-word').value.trim();
+	yourAnswer.innerHTML = inputBar.value.trim();
 })
 
 document.getElementById('reset').addEventListener('click', function() { 
-	document.getElementById('your-word').innerHTML = document.getElementById('input-word').value.trim();
+	yourAnswer.innerHTML = inputBar.value.trim();
 })

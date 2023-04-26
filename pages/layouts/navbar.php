@@ -1,15 +1,14 @@
-<?php
-include("contactUsModal.php");
-if (TITLE == "Benvenuto su Quinidy") {
-	echo '<script src="bootstrap/js/jquery-3.2.1.slim.js"></script><script src="bootstrap/js/bootstrap.js"></script>';
-} else {
-	echo '<script src="../bootstrap/js/jquery-3.2.1.slim.js"></script><script src="../bootstrap/js/bootstrap.js"></script>';
-}
+<?php // Quinidy navbar
+	include("contactUsModal.php");
+	if (TITLE == "Benvenuto su Quinidy") { 
+		echo '<script src="bootstrap/js/jquery-3.2.1.slim.js"></script><script src="bootstrap/js/bootstrap.js"></script>';
+	} else {
+		echo '<script src="../bootstrap/js/jquery-3.2.1.slim.js"></script><script src="../bootstrap/js/bootstrap.js"></script>';
+	}
 ?>
-
-
+<!-- Navbar -->
 <nav class="navbar navbar-expand-sm navbar-dark mt-2 mb-5 ms-2 me-2 px-1 bg-black bg-opacity-50 rounded fixed-top " style="box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;">
-	<?php
+	<?php /* Logo image */
 	if (TITLE == "Benvenuto su Quinidy") {
 		echo '<a class="navbar-brand ms-2" href="index.php" style="max-width: 50%;"><img src="src/img/logo.png" class="img-fluid d-inline-block align-top" style="align-middle; height:55px;" alt="Logo"></a>';
 	} elseif (TITLE == "Accedi a Quinidy" or TITLE == "Registrati a Quinidy") {
@@ -18,15 +17,13 @@ if (TITLE == "Benvenuto su Quinidy") {
 		echo '<a class="navbar-brand ms-2" href="mainpage.php" style="max-width: 50%;"><img src="../src/img/logo.png" class="img-fluid d-inline-block align-top" style="align-middle; height:55px;" alt="logo"></a>';
 	}
 	?>
-
+	<!-- Navbar collapse (+) button -->
 	<button class="navbar-toggler ms-2 mb-2 me-2 rounded-pill" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-
-
+	<!-- Navbar buttons -->
 	<div class="collapse navbar-collapse w-250" id="navbarSupportedContent">
-		<!-- Contiene i tasti di navigazione -->
-		<ul class="navbar-nav"> <!-- ms-auto -->
+		<ul class="navbar-nav">
 			<li class="nav-item active">
 				<div>
 					<?php
@@ -34,7 +31,6 @@ if (TITLE == "Benvenuto su Quinidy") {
 						echo '<a role="button" class="btn btn-nav nav-link ms-3" href="#main" style="">Home</a>';
 						echo '<a role="button" class="btn btn-nav nav-link ms-3" data-toggle="modal" data-target="#contactUsModal">Contatto</a>';
 						echo '<a role="button" class="btn btn-nav nav-link ms-3" href="#classicQuiz">Cos’è</a>';
-						/* echo '<a class="btn btn-login rounded-pill px-3 ms-3" href="pages/login.php" role="button" id="button"><i class="bi bi-key-fill"></i> Accedi</a>'; */
 					} elseif (TITLE == "Accedi a Quinidy" or TITLE == "Registrati a Quinidy") {
 						echo '<a role="button" class="btn btn-nav nav-link ms-3" href="../index.php">Home</a>';
 						echo '<a role="button" class="btn btn-nav nav-link ms-3" data-toggle="modal" data-target="#contactUsModal">Contatto</a>';
@@ -45,18 +41,16 @@ if (TITLE == "Benvenuto su Quinidy") {
 					} elseif (TITLE == "Gioca a Quinidy") {
 						echo '<a role="button" class="btn btn-nav nav-link ms-3" href="mainpage.php">Home</a>';
 						echo '<a role="button" class="btn btn-nav nav-link ms-3" data-toggle="modal" data-target="#contactUsModal">Contatto</a>';
-						/* echo '<a class="btn btn-profile rounded-pill px-3 ms-2 me-2" href="user.php" role="button" id="button"><i class="bi bi-person-fill"></i> Profilo</a>'; */
-					} else {  /* per tutte le restanti schermate ovvero quelle di gioco */
+					} else { 
 						echo '<a role="button" class="btn btn-nav nav-link ms-3" href="mainpage.php">Home</a>';
 						echo '<a role="button" class="btn btn-nav nav-link ms-3" data-toggle="modal" data-target="#contactUsModal">Contatto</a>';
-						/* bottone con poco senso visto che il selettore di livello e il quiz sono fatti sulla stessa pagina*/
 						echo '<a class="btn btn-nav nav-link ms-3" role="button" id="back-button" style="display: none;" href=""><i class="bi bi-arrow-bar-left"></i> Indietro</a>';
 					}
 					?>
 				</div>
 			</li>
 		</ul>
-		<!-- Contiene tasto accedi, profilo e barra di ricerca -->
+		<!-- Login/user button and search bar -->
 		<ul class="navbar-nav ms-auto d-flex" style="align-items: center;">
 			<li class="nav-item active">
 				<?php

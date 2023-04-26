@@ -32,9 +32,10 @@
 	}
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="it">
     <head><?php include 'layouts/headTags.php'; ?></head>
 	<body class="all-bg purple-bg d-flex flex-column min-vh-100">
+	
 		<?php include("../pages/layouts/navbar.php") ?>
 		
 		<section class="margin-main text-center py-5">

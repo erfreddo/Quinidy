@@ -669,7 +669,7 @@ const questionsFour = [{
 // Discovery Quiz questions
 const questionsDiscovery = [{
         q: "Una malattia",
-        answer: ['peste','peste nera'],
+        answer: ['peste','peste nera','la peste nera','la peste'],
 		img:'../src/img/DiscoveryQuiz/DiscoveryQuiz-1.jpg'
     }, {
         q: "Una costellazione",

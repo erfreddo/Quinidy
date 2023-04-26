@@ -14,7 +14,9 @@
 		<style>.quiz-screen img { width:500px; height:auto; }</style>
 	</head>
 	<body class="all-bg red-bg d-flex flex-column min-vh-100 text-center" onload="showReset()">
+	
 		<?php include("../pages/layouts/navbar.php") ?>
+		
 		<div class="four-title d-flex justify-content-center">
 			<h4 class="text-white" style="margin-top:110px;">Discovery Quiz</h4>
 		</div>
@@ -49,7 +51,7 @@
 			</div>
 			<!--Input field-->
 			<form id="info" class="info d-flex justify-content-center" autocomplete="off" autofocus>
-				<input id="input-word" type="text" size="20" minlength="1" class="input-bar">
+				<input id="input-word" type="text" class="input-bar">
 				<a id="apply" type="button" class="apply"><i class="bi bi-vector-pen"></i></a>
 			</form>
 			<!--Submit button-->

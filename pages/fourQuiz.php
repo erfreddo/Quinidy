@@ -53,10 +53,10 @@
 			</form>
 			<!--Submit button-->
 			<iframe name="content" hidden></iframe>
-			<form action="../php/saveLevel.php" method="post" target="content" id="next-form">
+			<form action="../php/saveLevel.php" method="post" target="content">
 				<input type="" name="four_levels" id="four_levels" hidden>
 				<div class="next-button">
-					<button type="submit" class="btn btn-next submit hiding" onclick="nextQuestion();" id="next" name="submit"><i class="bi bi-caret-right-fill"></i></button>
+					<button type="submit" class="btn btn-next submit" onclick="nextQuestion();" id="next" name="submit" disabled><i class="bi bi-caret-right-fill"></i></button>
 				</div>
 			</form>
 		</div>

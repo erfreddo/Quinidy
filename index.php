@@ -13,13 +13,14 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
 		<link rel="stylesheet" type="text/css" href="src/font/font.css"/>
-		<link rel="stylesheet" href="src/css/extra.css">
+		<link rel="stylesheet" type="text/css" href="src/css/extra.css">
 		<script src="bootstrap/js/bootstrap.js"></script>
 	</head>
 
 	<body class="w-auto h-auto all-bg purple-bg d-flex flex-column min-vh-100 text-center">
 
 		<?php include("pages/layouts/navbar.php") ?>
+		
 		<!-- Title text and carousel -->
 		<section id="main" class="text-center">
 			<h1 class="index-title text-white margin-main text-shadow">Pronto per un quiz?</h1>
