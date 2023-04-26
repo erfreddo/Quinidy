@@ -193,6 +193,7 @@ table td{
 }
 /*--------------------------------------------------------------*/
 /* 4F1P Style & Discovery Quiz Style */
+.quiz-screen img { width:500px; height:auto; }
 /* Level selector*/
 .btn-four{
 	margin-left:5px;

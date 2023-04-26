@@ -7,29 +7,28 @@ const quizScreen = document.querySelector(".quiz-screen");
 const endScreen = document.querySelector(".end-screen");
 const nextButton = document.getElementById("next");
 const imgNumber = document.getElementById("selected-level");
-const yourAnswer = document.getElementById("your-word");
-const inputBar = document.getElementById("input-word");
+
+const inputWord = document.getElementById("input-word");
+const yourWord = document.getElementById("your-word");
 const applyButton = document.getElementById("apply");
 
 // Variables
-let q=questionsFour.length;	// Number of questions selected
-let correct=0;		// Number of correct answers
-let attempts=0;		// Number of answers (correct+wrong)
-let qSelected;		// Question displayed
-let qList=[];		// List of questions
-let oList=[];		// List of options
+let q=questionsFour.length;	// Number of questions
+let qSelected; // Question displayed
+let qList=[]; // List of questions
 let count=0;
 
 // Start quiz
 function startQuiz() {
 	if (document.getElementById('fl').innerHTML < q){
-		document.getElementById("back-button").style.display="inline";
+		document.getElementById("back-button").style.display="inline"; // Show back button on navbaer
 		startScreen.classList.add("hide"); 		// Hide start screen
 		quizScreen.classList.remove("hide"); 	// Show quiz screen
 		setGame(); 								// Set game values, import questions
 		getQuestion();							// Display question, options...
 	}
 }
+// Show reset button if all levels are completed
 function showReset(){
 	if(document.getElementById('fl').innerHTML==q){
 		document.getElementById("reset-start").classList.remove("hiding"); 
@@ -38,31 +37,29 @@ function showReset(){
 }
 // Set game values
 function setGame() {
-    //nextButton.classList.add("hiding"); // Hide next question button
 	for (let i=0; i < questionsFour.length; i++) { // Push all questions from questions.js to qList
 		qList.push(questionsFour[i]);
 	}
 
 }
-
 // Prepare questions and options
 function getQuestion() {
-	// Show random question
-	inputBar.focus();
-	yourAnswer.classList.remove("correct");
-	yourAnswer.classList.remove("wrong");
-	inputBar.disabled = false;
+	// Set initial status of question
+	inputWord.focus(); // Focus cursore on input field
+	yourWord.classList.remove("correct"); // Remove style of word displayed
+	yourWord.classList.remove("wrong");
+	inputWord.disabled = false; // Active input field
 	applyButton.disabled = false;
 	applyButton.classList.remove("disabled");
-	
+	// Select question in order
     const qSelected = qList[imgNumber.innerHTML-1+count];
-    questionImg.src = qSelected.img;
+    questionImg.src = qSelected.img; // Set the image
 	answer = qSelected.answer;
-	yourAnswer.innerHTML=fieldWord(answer.length);
-	applyButton.setAttribute("onclick", "getResult(answer)");
+	yourWord.innerHTML=fieldWord(answer.length); // Display dashes with word lenght under the image
+	applyButton.setAttribute("onclick", "getResult(answer)"); // Apply button of input field shows the result when clicked
 	
 }
-// Display dashes below image
+// Function that generate n dashes
 function fieldWord(n){
 	let dashes="";
 	for (let i=0; i<n; i++){
@@ -73,52 +70,54 @@ function fieldWord(n){
 }
 // Show the result of question
 function getResult(answer) {
-    var yourWord = yourAnswer.innerHTML;
-    // Check if the selected option is the answer in questions.js
-	if (yourWord===""){
-		yourAnswer.innerHTML=fieldWord(answer.length);
+	
+    var w = yourWord.innerHTML;
+	
+	if (w===""){
+		yourWord.innerHTML=fieldWord(answer.length); // Empty string in input -> show dashes
 	}
-    if (yourWord.toLowerCase() === answer.toLowerCase()) {
-        nextButton.disabled = false; // Show next button after one is clicked
-		inputBar.value="";
-		inputBar.disabled = true;
+	// Check if the selected option is the answer in questions.js
+    if (w.toLowerCase() === answer.toLowerCase()) {
+        nextButton.classList.remove("disabled"); // Active next button after correct answer submit
+		inputWord.value="";
+		inputWord.disabled = true; // Disable input form
 		applyButton.classList.add("disabled");
-		yourAnswer.classList.remove("wrong");
-		yourAnswer.classList.add("correct");
+		yourWord.classList.remove("wrong");
+		yourWord.classList.add("correct"); // Add green style to word
 		count++;
-		document.getElementById("four_levels").value = imgNumber.innerHTML-1+count;
+		document.getElementById("four_levels").value = imgNumber.innerHTML-1+count; // Save value of current completed levels
 		document.getElementById('fl').innerHTML = imgNumber.innerHTML-1+count;
 	}
 	else{
-		yourAnswer.classList.remove("correct");
-		yourAnswer.classList.add("wrong");
+		yourWord.classList.remove("correct");
+		yourWord.classList.add("wrong"); // If input is wrong change to red style
 	}
 }
 
 // Generate next question screen
 function nextQuestion() {
-    if (imgNumber.innerHTML-1+count==q) { 
+    if (imgNumber.innerHTML-1+count==q) { // End quiz if all levels are completed
 		endQuiz();
 	}
 	else { 
-		getQuestion();
-		inputBar.focus();
+		getQuestion(); // Generate another question
+		inputWord.focus();
 	}
-	nextButton.disabled = true; // Hide "next" button
+	nextButton.classList.add("disabled"); // Disable "next" button
 }
 
 // End of the game function
 function endQuiz() {
     quizScreen.classList.add("hide"); // Hide quiz screen
-	endScreen.classList.remove("hide");
+	endScreen.classList.remove("hide"); // Show end screen
 }
-
+// Reset quiz: value of completed levels = 0
 function resetQuiz(){
 	document.getElementById("four_levels").value = 0;
 	document.getElementById('fl').innerHTML = 0;
 	setTimeout(function(){ window.location.reload(); }, 200);
 }
-// Generate level buttons on start screen
+// Generate n buttons for level progression/selection
 window.addEventListener("DOMContentLoaded", function myFunction(e){
 	let lastLevel = document.getElementById("fl").innerHTML;
 	for(let i = 1; i <= q; i++){
@@ -140,17 +139,17 @@ window.addEventListener("DOMContentLoaded", function myFunction(e){
 			newBtn.classList.add("btn-warning");
 		}
 		else if(i-1 > lastLevel){
-			newBtn.classList.add("hiding");
+			newBtn.classList.add("disabled");
 		}
 		
 		document.querySelector('.level-box').appendChild(newBtn);
 	}
 });
-// Show your input text below the image
-document.getElementById('apply').addEventListener('click', function() { 
-	yourAnswer.innerHTML = inputBar.value.trim();
+
+applyButton.addEventListener('click', function() { 
+	yourWord.innerHTML = inputWord.value.trim();
 })
 
-document.getElementById('reset').addEventListener('click', function() { 
-	yourAnswer.innerHTML = inputBar.value.trim();
+applyButton.addEventListener('click', function() { 
+	yourWord.innerHTML = inputWord.value.trim();
 })

@@ -11,7 +11,6 @@
 		<link rel="stylesheet" type="text/css" href="../src/css/quizStyle.css">
 		<script src="jquery-3.6.4.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-		<style>.quiz-screen img { width:500px; height:auto; }</style>
 	</head>
 	<body class="all-bg red-bg d-flex flex-column min-vh-100 text-center" onload="showReset()">
 	
@@ -59,7 +58,7 @@
 			<form action="../php/saveLevel2.php" method="post" target="content">
 				<input type="" name="discovery_levels" id="discovery_levels" hidden>
 				<div class="next-button">
-					<button type="submit" class="btn btn-next submit hiding" onclick="nextQuestion();" id="next" name="submit"><i class="bi bi-caret-right-fill"></i></button>
+					<button type="submit" class="btn btn-next submit disabled" onclick="nextQuestion();" id="next" name="submit"><i class="bi bi-caret-right-fill"></i></button>
 				</div>
 			</form>
 		</div>

@@ -8,25 +8,27 @@ const endScreen = document.querySelector(".end-screen");
 const nextButton = document.getElementById("next");
 const imgNumber = document.getElementById("selected-level");
 
+const inputWord = document.getElementById("input-word");
+const yourWord = document.getElementById("your-word");
+const applyButton = document.getElementById("apply");
+
 // Variables
-let q=questionsDiscovery.length;	// Number of questions selected
-let correct=0;		// Number of correct answers
-let attempts=0;		// Number of answers (correct+wrong)
-let qSelected;		// Question displayed
-let qList=[];		// List of questions
-let oList=[];		// List of options
+let q=questionsDiscovery.length; // Number of questions
+let qSelected; // Question displayed
+let qList=[]; // List of questions
 let count=0;
 
 // Start quiz
 function startQuiz() {
 	if (document.getElementById('fl').innerHTML < q){
-		document.getElementById("back-button").style.display="inline";
+		document.getElementById("back-button").style.display="inline"; // Show back button on navbaer
 		startScreen.classList.add("hide"); 		// Hide start screen
 		quizScreen.classList.remove("hide"); 	// Show quiz screen
 		setGame(); 								// Set game values, import questions
 		getQuestion();							// Display question, options...
 	}
 }
+// Show reset button if all levels are completed
 function showReset(){
 	if(document.getElementById('fl').innerHTML==q){
 		document.getElementById("reset-start").classList.remove("hiding"); 
@@ -35,7 +37,6 @@ function showReset(){
 }
 // Set game values
 function setGame() {
-    //nextButton.classList.add("hiding"); // Hide next question button
 	for (let i=0; i < questionsDiscovery.length; i++) { // Push all questions from questions.js to qList
 		qList.push(questionsDiscovery[i]);
 	}
@@ -45,42 +46,41 @@ function setGame() {
 // Prepare questions and options
 function getQuestion() {
 	// Show random question
-	document.getElementById("input-word").focus();
-	document.getElementById("your-word").classList.remove("correct");
-	document.getElementById("your-word").classList.remove("wrong");
-	document.getElementById("input-word").disabled = false;
-	document.getElementById("apply").disabled = false;
-	document.getElementById("apply").classList.remove("disabled");
+	inputWord.focus();
+	yourWord.classList.remove("correct");
+	yourWord.classList.remove("wrong");
+	inputWord.disabled = false;
+	applyButton.disabled = false;
+	applyButton.classList.remove("disabled");
     const qSelected = qList[imgNumber.innerHTML-1+count];
 	document.getElementById("context").innerHTML=qSelected.q;
     questionImg.src = qSelected.img;
 	answer = qSelected.answer;
-	document.getElementById("your-word").innerHTML="???"
-	document.getElementById("apply").setAttribute("onclick", "getResult(answer)");
-	
+	yourWord.innerHTML="???"
+	applyButton.setAttribute("onclick", "getResult(answer)");
 }
 
 // Show the result of question
 function getResult(answer) {
-    var yourWord = document.getElementById("your-word").innerHTML;
+    var w = yourWord.innerHTML;
     // Check if the selected option is the answer in questions.js
-	if (yourWord===""){
-		document.getElementById("your-word").innerHTML="???"
+	if (w===""){
+		yourWord.innerHTML="???"
 	}
-    if (answer.includes(yourWord.toLowerCase())) {
-        nextButton.classList.remove("hiding"); // Show next button after one is clicked
-		document.getElementById("input-word").value="";
-		document.getElementById("input-word").disabled = true;
-		document.getElementById("apply").classList.add("disabled");
-		document.getElementById("your-word").classList.remove("wrong");
-		document.getElementById("your-word").classList.add("correct");
+    if (answer.includes(w.toLowerCase())) {
+        nextButton.classList.remove("disabled"); // Show next button after one is clicked
+		inputWord.value="";
+		inputWord.disabled = true;
+		applyButton.classList.add("disabled");
+		yourWord.classList.remove("wrong");
+		yourWord.classList.add("correct");
 		count++;
 		document.getElementById("discovery_levels").value = imgNumber.innerHTML-1+count;
 		document.getElementById('fl').innerHTML = imgNumber.innerHTML-1+count;
 	}
 	else{
-		document.getElementById("your-word").classList.remove("correct");
-		document.getElementById("your-word").classList.add("wrong");
+		yourWord.classList.remove("correct");
+		yourWord.classList.add("wrong");
 	}
 }
 
@@ -91,9 +91,9 @@ function nextQuestion() {
 	}
 	else { 
 		getQuestion();
-		document.getElementById("input-word").focus();
+		inputWord.focus();
 	}
-	nextButton.classList.add("hiding"); // Hide "next" button
+	nextButton.classList.add("disabled"); // Hide "next" button
 }
 
 // End of the game function
@@ -129,7 +129,7 @@ window.addEventListener("DOMContentLoaded", function myFunction(e){
 			newBtn.classList.add("btn-warning");
 		}
 		else if(i-1 > lastLevel){
-			newBtn.classList.add("hiding");
+			newBtn.classList.add("disabled");
 		}
 		
 		document.querySelector('.level-box').appendChild(newBtn);
