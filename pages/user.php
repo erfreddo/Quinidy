@@ -2,7 +2,7 @@
 	session_start();
 	include '../php/connection.php';
 	define("TITLE","Il tuo Quinidy");
-	if (!isset($_SESSION['nickname'])){header("Location: ../index.php");}
+	if (!isset($_SESSION['nickname'])){ header("Location: ../index.php"); }
 	$nickname = $_SESSION['nickname'];
 	
 	//Update points in database

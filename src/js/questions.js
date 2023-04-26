@@ -294,7 +294,7 @@ const questionsMusic = [{
         answer: 0,
     }, {
         q: 'Quale gruppo disco music ha composto la colonna sonora del film “Saturday Night Fever”?',
-        options: ['Bee Gees', 'Wham', 'Police', 'Kool and the Gang'],
+        options: ['Bee Gees', 'Wham', 'The Police', 'Kool and the Gang'],
         answer: 0,
     }, {
         q: 'Chi ha scritto la sequenza gregoriana dello "Stabat Mater"?',

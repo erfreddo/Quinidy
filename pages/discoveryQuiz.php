@@ -7,14 +7,8 @@
 <!DOCTYPE html>
 <html lang="it">
 	<head>
-		<title><?php echo TITLE?></title>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css"/>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-		<link rel="stylesheet" type="text/css" href="../src/font/font.css"/>
-		<link rel="stylesheet" href="../src/css/quizStyle.css">
-		<link rel="stylesheet" href="../src/css/extra.css">
+		<?php include 'layouts/headTags.php'; ?>
+		<link rel="stylesheet" type="text/css" href="../src/css/quizStyle.css">
 		<script src="jquery-3.6.4.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 		<style>.quiz-screen img { width:500px; height:auto; }</style>

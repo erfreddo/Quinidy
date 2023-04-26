@@ -1,9 +1,7 @@
 <?php // Quinidy main page
-session_start();
-define("TITLE", "Gioca a Quinidy");
-if (!isset($_SESSION['nickname'])) {
-	header("Location: ../index.php");
-}
+	session_start();
+	define("TITLE", "Gioca a Quinidy");
+	if (!isset($_SESSION['nickname'])) { header("Location: ../index.php"); }
 ?>
 <!DOCTYPE html>
 <html lang="it">

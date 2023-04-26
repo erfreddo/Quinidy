@@ -1,16 +1,14 @@
 <?php // Quinidy landing page
-include 'php/connection.php';
-define("TITLE", "Benvenuto su Quinidy");
-session_start();
-if (isset($_SESSION['nickname'])){
-	header("Location: pages/mainpage.php");
-}
+	include 'php/connection.php';
+	define("TITLE", "Benvenuto su Quinidy");
+	session_start();
+	if (isset($_SESSION['nickname'])){ header("Location: pages/mainpage.php"); }
 ?>
 <!DOCTYPE html>
 <html lang="it">
 	<head>
 		<title><?php echo TITLE ?></title>
-		<meta charset="utf-8" />
+		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
