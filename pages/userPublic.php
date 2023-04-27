@@ -76,11 +76,7 @@
 							<div style="position: relative;">
 								<img src=<?php echo $propic ?> class="rounded-circle img-fluid shadow-sm" style="width: 150px; height:150px;" alt="Propic" >
 							</div>
-							
-							<h5 class="h2 my-3" id="title"><?php echo $nickname ?></h5>
-							<p class="mb-2"></p>
-							<p class="mb-2"></p>
-							<div class="d-flex justify-content-center mb-2"></div>
+							<h5 class="h2 mt-4" id="title"><?php echo ucfirst(strtolower($nickname)) ?></h5>
 						</div>
 					</div>
 					<div class="card mb-4 bg-black bg-opacity-50 rounded text-white">
@@ -214,7 +210,7 @@
 		<section class=<?php if (!$set) {echo '"py-1 margin-main text-center"';} else {echo '"hide"';} ?> >
 			<?php if(TITLE=="Benvenuto su Quinidy") { echo "<img class='img-fluid' style='width: 100%; height:auto;' src='src/img/notfound.png'>"; } else { echo "<img src='../src/img/notfound.png'>"; } ?>
 			<div class="d-flex justify-content-center">
-				<h1 class="text-white text-center">L'utente "<?php echo "$nickname"?>" non esiste...</h1>
+				<h1 class="text-white text-center">L'utente <span style="color:yellow;"><?php echo ucfirst(strtolower($nickname))?></span> non esiste...</h1>
 			</div>
 		</section>
 		

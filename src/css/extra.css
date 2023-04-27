@@ -273,7 +273,9 @@
 	transform: translate(0, 0);
 }
 
-
+.carousel-animation .carousel-item {
+	transform: none;
+}
 
 .carousel-animation .carousel-item-left {
 	animation-name: bounceInRight;

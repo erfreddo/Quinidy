@@ -64,7 +64,7 @@ if (TITLE == "Benvenuto su Quinidy") {
 			</li>
 			<li class="nav-item active">
 				<?php
-				if (TITLE=="Benvenuto su Quinidy"){ $link = "'pages/userPublic.php?nickname='+document.getElementById('searchbar').value;"; }
+				if (TITLE=="Benvenuto su Quinidy"){ $link = "'pages/userPublic.php?nickname='+document.getElementById('searchbar').value.toUpperCase();"; }
 				else { $link = "'userPublic.php?nickname='+document.getElementById('searchbar').value.toUpperCase();"; }
 				?>
 				<form class='d-flex' onSubmit='return submitForm()' method='GET'>
