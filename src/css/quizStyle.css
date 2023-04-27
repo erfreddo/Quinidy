@@ -193,6 +193,7 @@ table td{
 }
 /*--------------------------------------------------------------*/
 /* 4F1P Style & Discovery Quiz Style */
+.quiz-screen img { width:500px; height:auto; }
 /* Level selector*/
 .btn-four{
 	margin-left:5px;
@@ -220,18 +221,18 @@ table td{
 	text-transform: uppercase;
 	margin-top: 10px;
 	font-weight: bold;
-	font-size: 35px;
+	font-size: 25px;
 	color: black;
-	margin-bottom:3px;
+	margin-bottom:4px;
 }
 .your-word.correct{
 	font-weight: bold;
-	font-size: 35px;
+	font-size: 25px;
 	color: #0BDA51;
 }
 .your-word.wrong{
 	font-weight: bold;
-	font-size: 35px;
+	font-size: 25px;
 	color: #FF3131;
 }
 /* Input */
@@ -245,7 +246,7 @@ table td{
 	border-width: 4px;
 	border-style: solid;
 	text-align: center;
-	font-size:30px;
+	font-size:25px;
 	transform: translateX(20px);
 }
 .input-bar:focus, input:focus{

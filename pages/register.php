@@ -32,17 +32,10 @@
 	}
 ?>
 <!DOCTYPE html>
-<html>
-    <head>
-        <title><?php echo TITLE?></title>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css"/>
-		<link rel="stylesheet" type="text/css" href="../src/font/font.css"/>
-		<link rel="stylesheet" type="text/css" href="../src/css/extra.css"/>
-    </head>
+<html lang="it">
+    <head><?php include 'layouts/headTags.php'; ?></head>
 	<body class="all-bg purple-bg d-flex flex-column min-vh-100">
+	
 		<?php include("../pages/layouts/navbar.php") ?>
 		
 		<section class="margin-main text-center py-5">
@@ -76,5 +69,6 @@
 		</section>	
 		
 		<?php include("../pages/layouts/footer.php") ?>
+		
 	</body>
 </html>

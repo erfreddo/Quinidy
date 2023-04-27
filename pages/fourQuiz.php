@@ -7,20 +7,15 @@
 <!DOCTYPE html>
 <html lang="it">
 	<head>
-		<title><?php echo TITLE?></title>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css"/>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-		<link rel="stylesheet" type="text/css" href="../src/font/font.css"/>
-		<link rel="stylesheet" href="../src/css/quizStyle.css">
-		<link rel="stylesheet" href="../src/css/extra.css">
+		<?php include 'layouts/headTags.php'; ?>
+		<link rel="stylesheet" type="text/css" href="../src/css/quizStyle.css">
 		<script src="jquery-3.6.4.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-		<style>.quiz-screen img { width:500px; height:auto; }</style>
 	</head>
 	<body class="all-bg green-bg d-flex flex-column min-vh-100 text-center" onload="showReset()">
+	
 		<?php include("../pages/layouts/navbar.php") ?>
+		
 		<div class="four-title d-flex justify-content-center">
 			<h3 class="text-white" style="margin-top:110px;">4 Foto 1 Parola</h3>
 		</div>
@@ -62,7 +57,7 @@
 			<form action="../php/saveLevel.php" method="post" target="content">
 				<input type="" name="four_levels" id="four_levels" hidden>
 				<div class="next-button">
-					<button type="submit" class="btn btn-next submit hiding" onclick="nextQuestion();" id="next" name="submit"><i class="bi bi-caret-right-fill"></i></button>
+					<button type="submit" class="btn btn-next submit disabled" onclick="nextQuestion();" id="next" name="submit"><i class="bi bi-caret-right-fill"></i></button>
 				</div>
 			</form>
 		</div>
@@ -75,9 +70,12 @@
 				<button type="submit" class="btn btn-hover color-8 rounded-pill px-2" onclick="resetQuiz();" id="reset" name="submit">Resetta</button>
 			</form>
 		</div>
+		
 		<script src="../src/js/questions.js"></script>
 		<script src="../src/js/fourQuizScript.js"></script>
+		
 		<script>
+			// Only alphanumeric characters allowed in input field
 			$('input').on('keypress', function (event) {
 				var regex = new RegExp("^[a-zA-Z0-9]+$");
 				var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
@@ -86,15 +84,17 @@
 				   return false;
 				}
 			});
-
-			var input = document.getElementById("input-word");
+			// User can apply the word by pressing Enter
+			var input = document.getElementById("input-word"); 
 			input.addEventListener("keypress", function(event) {
-			  if (event.key === "Enter") {
+				if (event.key === "Enter") {
 				event.preventDefault();
 				document.getElementById("apply").click();
-			  }
+				}
 			});
 		</script>
+		
 		<?php include("../pages/layouts/footer.php") ?>
+		
 	</body>
 </html>

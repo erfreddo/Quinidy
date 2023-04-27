@@ -2,16 +2,16 @@
 	session_start();
 	include '../php/connection.php';
 	define("TITLE","Il tuo Quinidy");
-	if (!isset($_SESSION['nickname'])){ header("Location: ../index.php"); }
-	$nickname = $_SESSION['nickname'];
-	
+	$nickname = $_GET['nickname'];
+	$GLOBALS['set']=false;
 	// Save points from database
 	$sql = "SELECT art_points,cinema_points,world_points,music_points,science_points,history_points,sport_points,four_levels,discovery_levels
-	FROM utenti WHERE nickname = '".$_SESSION['nickname']."'";
+	FROM utenti WHERE nickname = '$nickname'";
 	$result = $conn->query($sql);
 	if($result){
 		while($row = $result->fetch_assoc()) {
 			if ($result->num_rows > 0) {
+				$set=true;
 				$GLOBALS['art_points'] = $row['art_points'];
 				$GLOBALS['cinema_points'] = $row['cinema_points'];
 				$GLOBALS['world_points'] = $row['world_points'];
@@ -26,11 +26,13 @@
 				$total_points = 0;
 				for ($i=0; $i<7; $i++){ if ($list[$i]>0){ $total_points = $total_points + $list[$i]; }}
 				if($total_points==0){$total_points=1;}
-			} 
+			}
+			else {$set=false;}
 		}
 	}
+	$propic = "https://i.imgur.com/V4RclNb.png";
 	// Load profile picture from database
-	$sql = "SELECT propic FROM utenti WHERE nickname = '".$_SESSION['nickname']."'";
+	$sql = "SELECT propic FROM utenti WHERE nickname = '$nickname'";
 	$result = $conn->query($sql);
 	if($result){
 		// Save the link
@@ -44,12 +46,6 @@
 			$propic = "https://i.imgur.com/V4RclNb.png";
 		}
 	}
-	// Update profile picture from modal form
-	if (isset($_POST['submit'])) {
-		$queryP = "UPDATE utenti SET propic = '". $_POST['linkpic'] ."' WHERE nickname = '".$_SESSION['nickname']."'";
-		$resultP = mysqli_query($conn, $queryP);
-		header("Location: user.php");
-	}
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -57,12 +53,13 @@
 		<?php include 'layouts/headTags.php'; ?>
 		<script src="../bootstrap/js/bootstrap.js"></script>
 		<script src="../src/js/questions.js"></script>
+		<style>.hide{display:none;}</style>
 	</head>
 	<body class="all-bg green-bg d-flex flex-column min-vh-100">
 	
 		<?php include("../pages/layouts/navbar.php") ?>
 		
-		<section class="py-1 margin-main">
+		<section class=<?php if ($set) {echo '"py-1 margin-main"';} else {echo '"hide"';} ?> >
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-4">
@@ -74,10 +71,8 @@
 								<img src=<?php echo $propic ?> class="rounded-circle img-fluid shadow-sm" style="width: 150px; height:150px;" alt="Propic" >
 							</div>
 							
-							<h5 class="h2 my-3" id="title"><?php echo $_SESSION['nickname'] ?></h5>
+							<h5 class="h2 my-3" id="title"><?php echo $nickname ?></h5>
 							<p class="mb-2"></p>
-							<button class="btn btn-primary rounded-pill px-2" role="button" id="button" data-toggle="modal" data-target="#Settings" type="button"><i class="bi bi-pencil-fill"></i> Cambia foto</button>
-							<a class="btn btn-secondary rounded-pill px-3 ms-1 me-2" href="logout.php" role="button" id="button"><i class="bi bi-box-arrow-left"></i> Esci</a>
 							<p class="mb-2"></p>
 							<div class="d-flex justify-content-center mb-2"></div>
 						</div>
@@ -110,11 +105,11 @@
 						<div class="card-body">
 							<div class="row">
 								<div class="col-sm-5">
-									<p class="mb-0" style="font-size:20px;">Domande a cui hai risposto</p>
+									<p class="mb-0" style="font-size:20px;">Domande a cui ha risposto</p>
 								</div>
 								<div class="col-sm-7 text-end">
 								<?php
-									$sql = "SELECT answered FROM utenti WHERE nickname = '".$_SESSION['nickname']."'";
+									$sql = "SELECT answered FROM utenti WHERE nickname = '".$nickname."'";
 									$result = $conn->query($sql);
 									if($result){
 										while($row = $result->fetch_assoc()) {
@@ -132,7 +127,7 @@
 								</div>
 								<div class="col-sm-7 text-end">
 									<?php
-											$sql = "SELECT correct FROM utenti WHERE nickname = '".$_SESSION['nickname']."'";
+											$sql = "SELECT correct FROM utenti WHERE nickname = '".$nickname."'";
 											$result = $conn->query($sql);
 											while($row = $result->fetch_assoc()) {
 												if ($result->num_rows > 0) {
@@ -208,31 +203,14 @@
 				</div>
 			</div>
 		</section>
-		<!-- Modal -->
-		<div class="modal fade" id="Settings" tabindex="-1" role="dialog" aria-labelledby="SettingsLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Cambia l'immagine di profilo</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<form action="" method="POST" class="login-form">
-						<div class="modal-body">
-							<div class="form-group">
-								<span class="mb-3">Inserisci il link di un'immagine:</span>
-								<input type="url" class="form-control rounded-left" name="linkpic" placeholder="Link" required>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<a class="btn btn-secondary rounded-pill submit py-2 px-4" data-dismiss="modal" role="button">Indietro</a>
-							<button type="submit" class="btn btn-primary rounded-pill submit py-2 px-4" name="submit" id="button">Carica</button>
-						</div>
-					</form>
-				</div>
+		
+		<!-- Section displayed when user not found -->
+		<section class=<?php if (!$set) {echo '"py-1 margin-main text-center"';} else {echo '"hide"';} ?> >
+			<?php if(TITLE=="Benvenuto su Quinidy") { echo "<img class='img-fluid' style='width: 100%; height:auto;' src='src/img/notfound.png'>"; } else { echo "<img src='../src/img/notfound.png'>"; } ?>
+			<div class="d-flex justify-content-center">
+				<h1 class="text-white text-center">L'utente "<?php echo "$nickname"?>" non esiste...</h1>
 			</div>
-		</div>
+		</section>
 		
 		<?php include("../pages/layouts/footer.php") ?>
 		

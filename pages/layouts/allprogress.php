@@ -1,4 +1,4 @@
-<!-- All progress bars -->
+<!-- All progress bars displayed in user page -->
 <div class="progress-stacked">
 	<div class="progress-bar overflow-visible progress-bar-striped progress-bar-animated" role="progressbar"
 		style="width: <?php if($art_points <= 0) {echo 0;} else {echo ($art_points*100)/$total_points;} ?>%; background-color:red;"><i class="bi bi-palette-fill"></i>

@@ -1,6 +1,4 @@
 /* Quinidy CSS */
-/*@import "../../bootstrap/css/bootstrap.css";*/
-
 
 /* Star icon */
 .star {
@@ -10,13 +8,11 @@
 }
 .star-green{
 	color: yellow;
-	/*text-shadow: 1px 1px 2px #000000;*/
 	border-color:rgba(0, 0, 0, 1);
 	font-size:23px;
 }
 .star-red{
 	color: yellow;
-	/*text-shadow: 1px 1px 2px red;*/
 	font-size:23px;
 }
 .over-img {position:absolute; top:0; bottom:0; left:0; right:0; text-align:center;}
@@ -53,7 +49,6 @@
     -o-transition: all .4s ease-in-out; 
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
-	/* text-shadow: 2px 2px black; */
 }
 
 @media screen and (max-width: 360px){
@@ -146,10 +141,7 @@
 	.btn-profile { }
 }
 .btn-login {
-	/* background: rgba(59,173,227,1);
-    background: linear-gradient(45deg, rgba(59,173,227,1) 0%, rgba(87,111,230,1) 25%, rgba(152,68,183,1) 51%, rgba(255,53,127,1) 100%); */
 	background-image: linear-gradient(to right, #e75516, #ef9d43);
-	/* box-shadow: 0 2px 2px 0 rgba(252, 104, 110, 0.75); */
 	display:inline-block;
 	cursor:pointer;
 	font-size:18px;
@@ -159,19 +151,14 @@
 	height:38px;
 }
 .btn-login:hover {
-	/* background: rgba(59,173,227,1);
-    background: linear-gradient(-135deg, rgba(59,173,227,1) 0%, rgba(87,111,230,1) 25%, rgba(152,68,183,1) 51%, rgba(255,53,127,1) 100%); */
 	background-image: linear-gradient(to left, #e75516, #ef9d43);
-	/* box-shadow: 0 2px 2px 0 rgba(252, 104, 110, 0.75); */
 }
 .btn-login:active {
 	position: relative;
 	top: 1px;
 }
 
-
 .btn-nav {
-	/* border-bottom: 8px solid red; */
 	display: inline-block;
 	cursor: pointer;
 	font-size: 18px;
@@ -209,6 +196,7 @@
 	color: black;
 }
 .btn-next:active, .btn-hover:active {transform: translateY(4px);}
+
 /* Main page cards*/
 .card .my-shadow {box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;}
 
@@ -242,7 +230,7 @@
 .margin-middle {margin-top: 200px; margin-bottom: 200px;}
 .margin-bottom {margin-bottom: 150px;}
 
-
+/* Other */
 .text-shadow {
 	text-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
