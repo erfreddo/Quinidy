@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
 		$_SESSION['correct'] = $row['correct'];
 		header("Location: mainpage.php");
 	} else {
-		//<script> $('#myModal').modal('show'); </script> //"<script>alert('Email o password errate.')</script>";
+		<script> $('#myModal').modal('show'); </script> //"<script>alert('Email o password errate.')</script>";
 	}
 }
 ?>
