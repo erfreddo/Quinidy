@@ -8,7 +8,7 @@ if (TITLE == "Benvenuto su Quinidy") {
 }
 ?>
 <!-- Navbar -->
-<nav class="navbar navbar-expand-sm navbar-dark mt-2 mb-5 ms-2 me-2 px-1 bg-black bg-opacity-50 rounded fixed-top " style="box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;">
+<nav class="navbar navbar-expand-sm navbar-dark mt-2 mb-5 ms-2 me-2 px-1 bg-black bg-opacity-50 rounded fixed-top" style="box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;">
 	<?php /* Logo image */
 	if (TITLE == "Benvenuto su Quinidy") {
 		echo '<a class="navbar-brand ms-2" href="index.php" style="max-width: 50%;"><img src="src/img/logo.png" class="img-fluid d-inline-block align-top" style="align-middle; height:55px;" alt="Logo"></a>';

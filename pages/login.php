@@ -1,39 +1,43 @@
 <?php // Quinidy login page
-	include '../php/connection.php';
-	define("TITLE", "Accedi a Quinidy");
-	session_start();
-	error_reporting(0);
+include '../php/connection.php';
+define("TITLE", "Accedi a Quinidy");
+session_start();
+error_reporting(0);
 
-	if (isset($_SESSION['nickname'])) { header("Location: mainpage.php"); }
+if (isset($_SESSION['nickname'])) {
+	header("Location: mainpage.php");
+}
 
-	if (isset($_POST['submit'])) {
-		$email = $_POST['email'];
-		$password = md5($_POST['password']);
-		$propic = $_POST['propic'];
-		$answered = $_POST['answered'];
-		$correct = $_POST['correct'];
-		$sql = "SELECT * FROM utenti WHERE email='$email' AND password='$password'";
+if (isset($_POST['submit'])) {
+	$email = $_POST['email'];
+	$password = md5($_POST['password']);
+	$propic = $_POST['propic'];
+	$answered = $_POST['answered'];
+	$correct = $_POST['correct'];
+	$sql = "SELECT * FROM utenti WHERE email='$email' AND password='$password'";
 
-		$result = mysqli_query($conn, $sql);
-		if ($result->num_rows > 0) {
-			$row = mysqli_fetch_assoc($result);
-			$_SESSION['nickname'] = $row['nickname'];
-			$_SESSION['propic'] = $row['propic'];
-			$_SESSION['answered'] = $row['answered'];
-			$_SESSION['correct'] = $row['correct'];
-			header("Location: mainpage.php");
-		} else {
-			echo "<script>alert('Email o password errate.')</script>";
-		}
+	$result = mysqli_query($conn, $sql);
+	if ($result->num_rows > 0) {
+		$row = mysqli_fetch_assoc($result);
+		$_SESSION['nickname'] = $row['nickname'];
+		$_SESSION['propic'] = $row['propic'];
+		$_SESSION['answered'] = $row['answered'];
+		$_SESSION['correct'] = $row['correct'];
+		header("Location: mainpage.php");
+	} else {
+		//<script> $('#myModal').modal('show'); </script> //"<script>alert('Email o password errate.')</script>";
 	}
+}
 ?>
 <!DOCTYPE html>
 <html lang="it">
-    <head><?php include 'layouts/headTags.php'; ?></head>
-    <body class="all-bg purple-bg d-flex flex-column min-vh-100">
-	
+
+<head><?php include 'layouts/headTags.php'; include 'layouts/loginErrorModal.php'; ?></head>
+
+	<body class="all-bg purple-bg d-flex flex-column min-vh-100">
+
 		<?php include("../pages/layouts/navbar.php") ?>
-		
+
 		<section class="margin-main text-center py-5">
 			<div class="container text-white">
 				<div class="row justify-content-center">
@@ -50,7 +54,9 @@
 								<div class="form-group mb-3">
 									<input type="password" class="form-control rounded-left" name="password" placeholder="Password" value="<?php echo $_POST['password']; ?>" required>
 								</div>
-								<div class="text-md-right"> <p>Non hai un account? <a href="register.php" id="button">Registrati</a>.</p></div>
+								<div class="text-md-right">
+									<p>Non hai un account? <a href="register.php" id="button">Registrati</a>.</p>
+								</div>
 								<div class="form-group d-flex justify-content-center">
 									<button type="submit" class="btn btn-hover color-3 rounded-pill submit" name="submit" id="button">Accedi</button>
 								</div>
@@ -60,8 +66,8 @@
 				</div>
 			</div>
 		</section>
-		
+
 		<?php include("../pages/layouts/footer.php") ?>
-		
 	</body>
+
 </html>

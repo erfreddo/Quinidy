@@ -294,3 +294,13 @@
 	transform: translate(0, 0);
 	animation-name: bounceOutRight;
 }
+
+
+/* stile dei controlli di campi di login e registrazione */
+.glyphicon-remove {
+	color: red;
+}
+
+.glyphicon-ok {
+	color: green;
+}
