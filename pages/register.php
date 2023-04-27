@@ -38,7 +38,7 @@
 	
 		<?php include("../pages/layouts/navbar.php") ?>
 		
-		<section class="margin-main text-center py-5">
+		<section class="margin-main text-center py-4">
 			<div class="container text-white">
 				<div class="row justify-content-center">
 					<div class="col-md-6 col-lg-5 shadow-lg p-3 mb-4 bg-black bg-opacity-50 rounded">
