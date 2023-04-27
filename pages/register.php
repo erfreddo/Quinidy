@@ -8,11 +8,11 @@ if (isset($_SESSION['nickname'])) {
 	header("Location: mainpage.php");
 }
 
-if (isset($_POST['submit'])) {
-	$nickname = $_POST['nickname'];
-	$email = $_POST['email'];
-	$password = md5($_POST['password']);
-	$password2 = md5($_POST['password2']);
+	if (isset($_POST['submit'])) {
+		$nickname = strtoupper($_POST['nickname']);
+		$email = $_POST['email'];
+		$password = md5($_POST['password']);
+		$password2 = md5($_POST['password2']);
 
 	if ($password == $password2) {
 		$sql = "SELECT * FROM utenti WHERE email='$email'";

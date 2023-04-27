@@ -225,12 +225,11 @@
 	background-image: url(../img/background-rays-red.png);
 }
 
-/* Site margin */
+/* Site margin and other */
 .margin-main {margin-top: 130px;}
 .margin-middle {margin-top: 200px; margin-bottom: 200px;}
 .margin-bottom {margin-bottom: 150px;}
 
-/* Other */
 .text-shadow {
 	text-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
@@ -238,18 +237,7 @@
 .fs-big {
 	font-size: calc(1.375rem + 1.6vw)
 }
-
-/* .col-sm:before {
-	-webkit-box-shadow: inset 0 0 20rem rgba(0, 0, 0, 1);
-	box-shadow: inset 0 0 20rem rgba(0, 0, 0, 1);
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	content: "";
-} */
-
+/* Carousel style and other stuff in index page*/
 @media screen and (min-width: 500px) {
 	.carousel {
 		text-align: center;
@@ -268,24 +256,13 @@
 	}
 }
 
-
 .orange-border-hover:hover{
 	border: 5px solid #ef9d43;
-	/* border-radius: var(2rem); */
 }
 
 .orange-border-hover:active {
 	border: 5px solid #ef9d43;
-	/* border-radius: var(2rem); */
 }
-
-
-/* .btn-nav:active {
-	border-bottom: 5px solid #ef9d43;
-	border-radius: 5px;
-	position: relative;
-	top: 1px;
-} */
 
 .carousel-animation .carousel-item {
 	transform: none;
