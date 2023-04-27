@@ -67,7 +67,7 @@
 			<h5>Se vuoi ricominciare, puoi resettare i livelli</h5>
 			<iframe name="content" hidden></iframe>
 			<form action="../php/saveLevel.php" method="post" target="content">
-				<button type="submit" class="btn btn-hover color-8 rounded-pill px-2" onclick="resetQuiz();" id="reset" name="submit">Resetta</button>
+				<button type="submit" class="btn btn-hover color-8 rounded-pill" onclick="resetQuiz();" id="reset" name="submit">Resetta</button>
 			</form>
 		</div>
 		
