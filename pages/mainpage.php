@@ -15,7 +15,7 @@
 			<!-- Title text -->
 			<section class="jumbotron text-center">
 				<div class="container">
-					<?php echo "<h1 class='hello text-white' style='font-weight:bold; text-shadow: 1px 1px 4px black;' >" . $_SESSION['nickname'] . ", seleziona una modalità</h1>"; ?>
+					<?php echo "<h1 class='hello text-white' style='font-weight:bold; text-shadow: 1px 1px 4px black;' >" . ucfirst(strtolower($_SESSION['nickname'])) . ", seleziona una modalità</h1>"; ?>
 					<p class="lead text-white text-shadow">Mettiti alla prova con un quiz</p>
 				</div>
 			</section>

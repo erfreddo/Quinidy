@@ -7,7 +7,7 @@
 	if (isset($_SESSION['nickname'])) { header("Location: mainpage.php"); }
 
 	if (isset($_POST['submit'])) {
-		$nickname = $_POST['nickname'];
+		$nickname = strtoupper($_POST['nickname']);
 		$email = $_POST['email'];
 		$password = md5($_POST['password']);
 		$password2 = md5($_POST['password2']);
@@ -33,12 +33,15 @@
 ?>
 <!DOCTYPE html>
 <html lang="it">
-    <head><?php include 'layouts/headTags.php'; ?></head>
+    <head>
+		<?php include 'layouts/headTags.php'; ?>
+		<script src="jquery-3.6.4.min.js"></script>
+	</head>
 	<body class="all-bg purple-bg d-flex flex-column min-vh-100">
 	
 		<?php include("../pages/layouts/navbar.php") ?>
 		
-		<section class="margin-main text-center py-5">
+		<section class="margin-main text-center py-4">
 			<div class="container text-white">
 				<div class="row justify-content-center">
 					<div class="col-md-6 col-lg-5 shadow-lg p-3 mb-4 bg-black bg-opacity-50 rounded">

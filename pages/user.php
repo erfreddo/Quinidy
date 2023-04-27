@@ -74,11 +74,10 @@
 								<img src=<?php echo $propic ?> class="rounded-circle img-fluid shadow-sm" style="width: 150px; height:150px;" alt="Propic" >
 							</div>
 							
-							<h5 class="h2 my-3" id="title"><?php echo $_SESSION['nickname'] ?></h5>
+							<h5 class="h2 mt-3" id="title"><?php echo ucfirst(strtolower($_SESSION['nickname'])) ?></h5>
 							<p class="mb-2"></p>
 							<button class="btn btn-primary rounded-pill px-2" role="button" id="button" data-toggle="modal" data-target="#Settings" type="button"><i class="bi bi-pencil-fill"></i> Cambia foto</button>
 							<a class="btn btn-secondary rounded-pill px-3 ms-1 me-2" href="logout.php" role="button" id="button"><i class="bi bi-box-arrow-left"></i> Esci</a>
-							<p class="mb-2"></p>
 							<div class="d-flex justify-content-center mb-2"></div>
 						</div>
 					</div>

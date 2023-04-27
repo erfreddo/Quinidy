@@ -42,7 +42,7 @@ if (TITLE == "Benvenuto su Quinidy") {
 					} elseif (TITLE == "Gioca a Quinidy") {
 						echo '<a role="button" class="btn btn-nav nav-link ms-4" href="mainpage.php">Home</a>';
 						echo '<a role="button" class="btn btn-nav nav-link ms-4" data-toggle="modal" data-target="#contactUsModal">Contatto</a>';
-					} else {  /* per tutte le restanti schermate ovvero quelle di gioco */
+					} else {
 						echo '<a role="button" class="btn btn-nav nav-link ms-4" href="mainpage.php">Home</a>';
 						echo '<a role="button" class="btn btn-nav nav-link ms-4" data-toggle="modal" data-target="#contactUsModal">Contatto</a>';
 						echo '<a class="btn btn-nav nav-link ms-4" role="button" id="back-button" style="display: none;" href=""><i class="bi bi-arrow-return-left"></i> Indietro</a>';
@@ -64,8 +64,8 @@ if (TITLE == "Benvenuto su Quinidy") {
 			</li>
 			<li class="nav-item active">
 				<?php
-				if (TITLE=="Benvenuto su Quinidy"){ $link = "'pages/userPublic.php?nickname='+document.getElementById('searchbar').value;"; }
-				else { $link = "'userPublic.php?nickname='+document.getElementById('searchbar').value;"; }
+				if (TITLE=="Benvenuto su Quinidy"){ $link = "'pages/userPublic.php?nickname='+document.getElementById('searchbar').value.toUpperCase();"; }
+				else { $link = "'userPublic.php?nickname='+document.getElementById('searchbar').value.toUpperCase();"; }
 				?>
 				<form class='d-flex' onSubmit='return submitForm()' method='GET'>
 					<input class="form-control rounded-pill me-2 mt-2 mb-2 ms-2" type="search" placeholder="Cerca utenti" aria-label="Cerca" id="searchbar">
