@@ -232,13 +232,19 @@
 	}
 }
 
+
+
 .orange-border-hover:hover{
-	border: 5px solid #ef9d43;
+	outline: solid 5px #ef9d43;
+	outline-offset: -5px;
 }
 
 .orange-border-hover:active {
-	border: 5px solid #ef9d43;
+	outline: solid 5px #ef9d43;
+	outline-offset: -5px;
 }
+
+
 
 .carousel-animation .carousel-item {
 	transform: none;
