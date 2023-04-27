@@ -2,6 +2,7 @@
 include("contactUsModal.php");
 if (TITLE == "Benvenuto su Quinidy") {
 	echo '<script src="bootstrap/js/jquery-3.2.1.slim.js"></script><script src="bootstrap/js/bootstrap.js"></script>';
+	echo '<link rel="stylesheet" href="./src/css/animate.css"/>';
 } else {
 	echo '<script src="../bootstrap/js/jquery-3.2.1.slim.js"></script><script src="../bootstrap/js/bootstrap.js"></script>';
 }
@@ -31,26 +32,26 @@ if (TITLE == "Benvenuto su Quinidy") {
 				<div>
 					<?php
 					if (TITLE == "Benvenuto su Quinidy") {
-						echo '<a role="button" class="btn btn-nav nav-link ms-3" href="#main" style="">Home</a>';
-						echo '<a role="button" class="btn btn-nav nav-link ms-3" data-toggle="modal" data-target="#contactUsModal">Contatto</a>';
-						echo '<a role="button" class="btn btn-nav nav-link ms-3" href="#classicQuiz">Cos’è</a>';
+						echo '<a role="button" class="btn btn-nav nav-link ms-4" href="#main">Home</a>';
+						echo '<a role="button" class="btn btn-nav nav-link ms-4" data-toggle="modal" data-target="#contactUsModal">Contatto</a>';
+						echo '<a role="button" class="btn btn-nav nav-link ms-4" href="#classicQuiz">Cos’è</a>';
 						/* echo '<a class="btn btn-login rounded-pill px-3 ms-3" href="pages/login.php" role="button" id="button"><i class="bi bi-key-fill"></i> Accedi</a>'; */
 					} elseif (TITLE == "Accedi a Quinidy" or TITLE == "Registrati a Quinidy") {
-						echo '<a role="button" class="btn btn-nav nav-link ms-3" href="../index.php">Home</a>';
-						echo '<a role="button" class="btn btn-nav nav-link ms-3" data-toggle="modal" data-target="#contactUsModal">Contatto</a>';
-						echo '<a role="button" class="btn btn-nav nav-link ms-3" href="../index.php#classicQuiz">Cos’è</a>';
+						echo '<a role="button" class="btn btn-nav nav-link ms-4" href="../index.php">Home</a>';
+						echo '<a role="button" class="btn btn-nav nav-link ms-4" data-toggle="modal" data-target="#contactUsModal">Contatto</a>';
+						echo '<a role="button" class="btn btn-nav nav-link ms-4" href="../index.php#classicQuiz">Cos’è</a>';
 					} elseif (TITLE == "Il tuo Quinidy") {
-						echo '<a role="button" class="btn btn-nav nav-link ms-3" href="mainpage.php">Home</a>';
-						echo '<a role="button" class="btn btn-nav nav-link ms-3" data-toggle="modal" data-target="#contactUsModal">Contatto</a>';
+						echo '<a role="button" class="btn btn-nav nav-link ms-4" href="mainpage.php">Home</a>';
+						echo '<a role="button" class="btn btn-nav nav-link ms-4" data-toggle="modal" data-target="#contactUsModal">Contatto</a>';
 					} elseif (TITLE == "Gioca a Quinidy") {
-						echo '<a role="button" class="btn btn-nav nav-link ms-3" href="mainpage.php">Home</a>';
-						echo '<a role="button" class="btn btn-nav nav-link ms-3" data-toggle="modal" data-target="#contactUsModal">Contatto</a>';
+						echo '<a role="button" class="btn btn-nav nav-link ms-4" href="mainpage.php">Home</a>';
+						echo '<a role="button" class="btn btn-nav nav-link ms-4" data-toggle="modal" data-target="#contactUsModal">Contatto</a>';
 						/* echo '<a class="btn btn-profile rounded-pill px-3 ms-2 me-2" href="user.php" role="button" id="button"><i class="bi bi-person-fill"></i> Profilo</a>'; */
 					} else {  /* per tutte le restanti schermate ovvero quelle di gioco */
-						echo '<a role="button" class="btn btn-nav nav-link ms-3" href="mainpage.php">Home</a>';
-						echo '<a role="button" class="btn btn-nav nav-link ms-3" data-toggle="modal" data-target="#contactUsModal">Contatto</a>';
+						echo '<a role="button" class="btn btn-nav nav-link ms-4" href="mainpage.php">Home</a>';
+						echo '<a role="button" class="btn btn-nav nav-link ms-4" data-toggle="modal" data-target="#contactUsModal">Contatto</a>';
 						/* bottone con poco senso visto che il selettore di livello e il quiz sono fatti sulla stessa pagina*/
-						echo '<a class="btn btn-nav nav-link ms-3" role="button" id="back-button" style="display: none;" href=""><i class="bi bi-arrow-bar-left"></i> Indietro</a>';
+						echo '<a class="btn btn-nav nav-link ms-4" role="button" id="back-button" style="display: none;" href=""><i class="bi bi-arrow-return-left"></i> Indietro</a>';
 					}
 					?>
 				</div>
@@ -61,7 +62,7 @@ if (TITLE == "Benvenuto su Quinidy") {
 			<li class="nav-item active">
 				<?php
 				if (TITLE == "Benvenuto su Quinidy") {
-					echo '<a class="btn btn-login rounded-pill px-3 ms-2 me-2" href="pages/login.php" role="button" id="button"><i class="bi bi-key-fill"></i> Accedi</a>';
+					echo '<a class="btn btn-login rounded-pill px-3 ms-2 me-2 animate__animated animate__bounce animate__delay-1s animate__repeat-3" href="pages/login.php" role="button" id="button"><i class="bi bi-key-fill"></i> Accedi</a>';
 				} elseif (TITLE == "Gioca a Quinidy") {
 					echo '<a class="btn btn-profile rounded-pill px-3 ms-2 me-2" href="user.php" role="button" id="button"><i class="bi bi-person-fill"></i> Profilo</a>';
 				}

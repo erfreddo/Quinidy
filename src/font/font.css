@@ -26,12 +26,35 @@ h1,h3{
 	font-style: normal;
 	font-weight: bold;
 }
+
+@media screen and (max-width: 500px) {
+	h1,h3 {
+		text-align: center;
+		font-family: "QuinidyBold";
+		font-style: normal;
+		font-weight: bold;
+		max-width: 90%;
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+}
+
 .index-title{
 	font-family: "QuinidyExtraBold";
 	font-style: normal;
 	font-weight: extra-bold;
 	font-size:90px;
 }
+@media screen and (max-width: 500px) {
+	.index-title {
+		font-family: "QuinidyExtraBold";
+		font-style: normal;
+		font-weight: extra-bold;
+		font-size: 70px;
+	}
+}
+
+
 .question{
 	font-family: "QuinidyBold";
 	font-style: normal;

@@ -5,4 +5,5 @@
 <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="../src/font/font.css" />
 <link rel="stylesheet" type="text/css" href="../src/css/extra.css">
-
+<link rel="stylesheet" type="text/css" href="../src/css/animate.css">
+<link rel="icon" href="../src/img/favicon.ico">
