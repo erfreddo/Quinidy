@@ -55,7 +55,6 @@ h1,h3{
 	}
 }
 
-
 .question{
 	font-family: "QuinidyBold";
 	font-style: normal;
@@ -68,6 +67,11 @@ h1,h3{
 }
 #title{
 	font-family:"QuinidyBold";
+	font-style: normal;
+	font-weight: bold;
+}
+.user-name{
+	font-family: "QuinidyExtraBold";
 	font-style: normal;
 	font-weight: bold;
 }

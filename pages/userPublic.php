@@ -1,13 +1,19 @@
 <?php //Quinidy user page
+
 	session_start();
 	include '../php/connection.php';
 	define("TITLE","Il tuo Quinidy");
 	$nickname = $_GET['nickname'];
 	$GLOBALS['set']=false;
+	
+	// If user is logged and he searches himself redirect to personal user page
+	if (isset($_SESSION['nickname']) and $_SESSION['nickname']==$_GET['nickname']){ header("Location: user.php"); }
+	
 	// Save points from database
 	$sql = "SELECT art_points,cinema_points,world_points,music_points,science_points,history_points,sport_points,four_levels,discovery_levels
 	FROM utenti WHERE nickname = '$nickname'";
 	$result = $conn->query($sql);
+	
 	if($result){
 		while($row = $result->fetch_assoc()) {
 			if ($result->num_rows > 0) {
