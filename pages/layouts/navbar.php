@@ -64,22 +64,36 @@ if (TITLE == "Benvenuto su Quinidy") {
 			</li>
 			<li class="nav-item active">
 				<?php
-				if (TITLE=="Benvenuto su Quinidy"){ $link = "'pages/userPublic.php?nickname='+document.getElementById('searchbar').value;"; }
+				if (TITLE=="Benvenuto su Quinidy"){ $link = "'pages/userPublic.php?nickname='+document.getElementById('searchbar').value.toUpperCase();"; }
 				else { $link = "'userPublic.php?nickname='+document.getElementById('searchbar').value.toUpperCase();"; }
 				?>
 				<form class='d-flex' onSubmit='return submitForm()' method='GET'>
 					<input class="form-control rounded-pill me-2 mt-2 mb-2 ms-2" type="search" placeholder="Cerca utenti" aria-label="Cerca" id="searchbar">
-					<button class="btn btn-success rounded-pill my-2 me-3 px-3" type="submit" id="button" role="button" ><i class="bi bi-search"></i></button>
+					<button class="btn btn-success rounded-pill my-2 me-3 px-3 disabled" type="submit" id="search-button" role="button"><i class="bi bi-search"></i></button>
 				</form>
-				<?php
-				echo "
 				<script>
-				function submitForm() {
-					location.href=".$link."
-					return false;
-				}
-				</script>"
-				?>
+				function submitForm() { location.href=<?php echo $link; ?> return false; }
+				 // Only alphanumeric characters allowed in input field
+				$('input').on('keypress', function (event) {
+					var regex = new RegExp("^[a-zA-Z0-9_-]+$");
+					var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+					if (!regex.test(key)) {
+					   event.preventDefault();
+					   return false;
+					}
+				});
+				$("input").keyup(function () {
+				   if ($(this).val()) {
+					  $("#search-button").removeClass("disabled");
+				   }
+				   else {
+					  $("#search-button").addClass("disabled");
+				   }
+				});
+				$("#search-button").click(function () {
+				   $(this).addClass("disabled");
+				});
+				</script>
 			</li>
 		</ul>
 	</div>
