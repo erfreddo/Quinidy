@@ -155,6 +155,7 @@ if (isset($_POST['submit'])) {
 				}
 				btnActive();
 			})
+
 		});
 
 		function btnActive() {
