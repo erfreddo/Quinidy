@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
 			$sql = "INSERT INTO utenti (nickname, email, password)
 						VALUES ('$nickname', '$email', '$password')";
 			$result = mysqli_query($conn, $sql);
-			$still=false;
+			$still = false;
 			if ($result) {
 				//echo "<script>alert('Registrazione completata.')</script>";
 				$nickname = "";
@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
 				echo "<script>alert('Errore, qualcosa non va.')</script>";
 			}
 		} else {
-			$still=true;
+			$still = true;
 		}
 	} else {
 		echo "<script>alert('La password non corrisponde.')</script>";
@@ -50,12 +50,15 @@ if (isset($_POST['submit'])) {
 
 <head>
 	<?php include 'layouts/headTags.php'; ?>
-	<script src="jquery-3.6.4.min.js"></script>
 </head>
 
 <body class="all-bg purple-bg d-flex flex-column min-vh-100">
 
 	<?php include("../pages/layouts/navbar.php") ?>
+
+	<link rel="stylesheet" href="../jquery/jquery.passwordRequirements.css" />
+	<script src="../jquery/jquery-3.6.4.js"></script>
+	<script src="../jquery/jquery.passwordRequirements.js"></script>
 
 	<section class="margin-main text-center py-4">
 		<div class="container text-white">
@@ -71,11 +74,20 @@ if (isset($_POST['submit'])) {
 								<input type="email" class="form-control rounded-left" id="email" name="email" placeholder="Email" value="<?php echo $email; ?>" required>
 							</div>
 							<div class="form-group mb-3">
-								<input type="password" class="form-control rounded-left" id="password" name="password" placeholder="Password" value="<?php echo $_POST['password']; ?>" required>
+								<input type="password" class="form-control rounded-left pr-password" id="password" name="password" placeholder="Password" value="<?php echo $_POST['password']; ?>" required>
+								<script>
+									$(function() {
+										$(".pr-password").passwordRequirements();
+									});
+								</script>
 							</div>
 							<div class="form-group mb-3">
 								<input type="password" class="form-control rounded-left mb-2" id="password2" name="password2" placeholder="Conferma password" value="<?php echo $_POST['password2']; ?>" required>
-								<p id="not-found" style='color:red;'><?php if ($still) {echo $error_message;} else {echo "";} ?></p>
+								<p id="not-found" style='color:red;'><?php if ($still) {
+																			echo $error_message;
+																		} else {
+																			echo "";
+																		} ?></p>
 							</div>
 							<div class="text-md-right">
 								<p>Hai un account? <a href="login.php" id="button">Accedi</a></p>
@@ -90,6 +102,7 @@ if (isset($_POST['submit'])) {
 		</div>
 	</section>
 	<script>
+		$('input').css("caret-color", "black");
 		let valid = [];
 		for (let i = 0; i < 4; i += 1) {
 			valid.push(false);
@@ -118,7 +131,6 @@ if (isset($_POST['submit'])) {
 				if (regex.test(input)) {
 					$('#email').css("color", "green");
 					valid[1] = true;
-					document.getElementById("register-btn").disable = false;
 				} else {
 					$('#email').css("color", "red");
 					valid[1] = false;
@@ -156,6 +168,11 @@ if (isset($_POST['submit'])) {
 				btnActive();
 			})
 
+		});
+		$(document).ready(function() {
+			$("input").on('blur', function() {
+				$("input").css("color", "black");
+			})
 		});
 
 		function btnActive() {
