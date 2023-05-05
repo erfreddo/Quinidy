@@ -7,4 +7,4 @@
 <link rel="stylesheet" type="text/css" href="../src/css/extra.css">
 <link rel="stylesheet" type="text/css" href="../src/css/animate.css">
 <link rel="icon" href="../src/img/favicon.ico">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script> -->

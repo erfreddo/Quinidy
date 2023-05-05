@@ -9,7 +9,7 @@ if (isset($_SESSION['nickname'])) {
 }
 
 $still = false;
-$error_message = "Email già registrata"; 
+$error_message = "Email già registrata";
 
 if (isset($_POST['submit'])) {
 	$nickname = strtoupper($_POST['nickname']);
@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
 			$sql = "INSERT INTO utenti (nickname, email, password)
 						VALUES ('$nickname', '$email', '$password')";
 			$result = mysqli_query($conn, $sql);
-			$still=false;
+			$still = false;
 			if ($result) {
 				//echo "<script>alert('Registrazione completata.')</script>";
 				$nickname = "";
@@ -32,143 +32,158 @@ if (isset($_POST['submit'])) {
 				$_POST['password'] = "";
 				$_POST['password2'] = "";
 				header("Location: login.php");
-			} else { echo "<script>alert('Errore, qualcosa non va.')</script>"; }
-		} else { $still=true; }
-	} else { echo "<script>alert('La password non corrisponde.')</script>"; }
+			} else {
+				echo "<script>alert('Errore, qualcosa non va.')</script>";
+			}
+		} else {
+			$still = true;
+		}
+	} else {
+		echo "<script>alert('La password non corrisponde.')</script>";
+	}
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="it">
 
-	<head>
-		<?php include 'layouts/headTags.php'; ?>
-	</head>
+<head>
+	<?php include 'layouts/headTags.php'; ?>
+</head>
 
-	<body class="all-bg purple-bg d-flex flex-column min-vh-100">
-		<?php include("../pages/layouts/navbar.php") ?>
+<body class="all-bg purple-bg d-flex flex-column min-vh-100">
 
-		<section class="margin-main text-center py-4">
-			<div class="container text-white">
-				<div class="row justify-content-center">
-					<div class="col-md-6 col-lg-5 shadow-lg p-3 mb-4 bg-black bg-opacity-50 rounded">
-						<div class="login-wrap p-4 p-md-5">
-							<h3 class="text-center mb-4 mt-3" id="title">Registra un account</h3>
-							<form action="" method="POST" class="login-form">
-								<div class="form-group mb-3">
-									<input type="text" class="form-control rounded-left" id="nickname" name="nickname" placeholder="Nickname" value="<?php echo $nickname; ?>">
-								</div>
-								<div class="form-group mb-3">
-									<input type="email" class="form-control rounded-left" id="email" name="email" placeholder="Email" value="<?php echo $email; ?>">
-								</div>
-								<div class="form-group mb-3" data-tip="Lunga 8-30 caratteri. Deve contenere almeno una lettera maiuscola, una minuscola, un numero e un carattere speciale.">
-									<input type="password" class="form-control rounded-left" id="password" name="password" placeholder="Password" value="<?php echo $_POST['password']; ?>">
-								</div>
-								<div class="form-group mb-3">
-									<input type="password" class="form-control rounded-left mb-2" id="password2" name="password2" placeholder="Conferma password" value="<?php echo $_POST['password2']; ?>">
-									<p id="not-found" style='color:red;'>
-										<?php if ($still) { echo $error_message; } ?>
-									</p>
-								</div>
-								<div class="text-md-right">
-									<p>Hai un account? <a href="login.php" id="button">Accedi</a></p>
-								</div>
-								<div class="form-group d-flex justify-content-center">
-									<button type="submit" class="btn btn-hover color-3 rounded-pill submit" name="submit" id="register-btn">Registrati</button>
-								</div>
-							</form>
-						</div>
+	<?php include("../pages/layouts/navbar.php") ?>
+
+	<link rel="stylesheet" href="../jquery/jquery.passwordRequirements.css" />
+	<script src="../jquery/jquery-3.6.4.js"></script>
+	<script src="../jquery/jquery.passwordRequirements.js"></script>
+
+	<section class="margin-main text-center py-4">
+		<div class="container text-white">
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-5 shadow-lg p-3 mb-4 bg-black bg-opacity-50 rounded">
+					<div class="login-wrap p-4 p-md-5">
+						<h3 class="text-center mb-4 mt-3" id="title">Registra un account</h3>
+						<form action="" method="POST" class="login-form">
+							<div class="form-group mb-3">
+								<input type="text" class="form-control rounded-left" id="nickname" name="nickname" placeholder="Nickname" value="<?php echo $nickname; ?>" required>
+							</div>
+							<div class="form-group mb-3">
+								<input type="email" class="form-control rounded-left" id="email" name="email" placeholder="Email" value="<?php echo $email; ?>" required>
+							</div>
+							<div class="form-group mb-3">
+								<input type="password" class="form-control rounded-left pr-password" id="password" name="password" placeholder="Password" value="<?php echo $_POST['password']; ?>" required>
+								<script>
+									$(function() {
+										$(".pr-password").passwordRequirements();
+									});
+								</script>
+							</div>
+							<div class="form-group mb-3">
+								<input type="password" class="form-control rounded-left mb-2" id="password2" name="password2" placeholder="Conferma password" value="<?php echo $_POST['password2']; ?>" required>
+								<p id="not-found" style='color:red;'><?php if ($still) {
+																			echo $error_message;
+																		} else {
+																			echo "";
+																		} ?></p>
+							</div>
+							<div class="text-md-right">
+								<p>Hai un account? <a href="login.php" id="button">Accedi</a></p>
+							</div>
+							<div class="form-group d-flex justify-content-center">
+								<button type="submit" class="btn btn-hover color-3 rounded-pill submit" name="submit" id="register-btn">Registrati</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
-		</section>
-		<script>
-			clearInput();
-			let valid = [];
-			for (let i = 0; i < 4; i += 1) {
-				valid.push(false);
-			}
-			document.getElementById("register-btn").classList.add("disabled");
-			// Check nickname field
-			$(document).ready(function() {
-				$('#nickname').on('input', function() {
-					var regex = new RegExp("^[a-zA-Z0-9_-]+$");
-					var input = document.getElementById("nickname").value;
-					if (regex.test(input)) {
-						$('#nickname').css("color", "green");
-						valid[0] = true;
-					} else {
-						$('#nickname').css("color", "red");
-						valid[0] = false;
-					}
-					btnActive();
-				})
-			});
-			// Check email field
-			$(document).ready(function() {
-				$('#email').on('input', function() {
-					var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-					var input = document.getElementById("email").value;
-					if (regex.test(input)) {
-						$('#email').css("color", "green");
-						valid[1] = true;
-						document.getElementById("register-btn").disable = false;
-					} else {
-						$('#email').css("color", "red");
-						valid[1] = false;
-					}
-					btnActive();
-				})
-			});
-			// Check password field
-			$(document).ready(function() {
-				$('#password').on('input', function() {
-					var regex = /^(?=.*[0-9])(?=.*[-_ ?!@#$%^&*\/\\])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9-_ ?!@#$%^&*\/\\]{8,30}$/;
-					var input = document.getElementById("password").value;
-					if (regex.test(input)) {
-						$('#password').css("color", "green");
-						valid[2] = true;
-					} else {
-						$('#password').css("color", "red");
-						valid[2] = false;
-					}
-					btnActive();
-				})
-			});
-			// Check password 2 field
-			$(document).ready(function() {
-				$('#password2').on('input', function() {
-					var input = document.getElementById("password2").value;
-					var regex = /^(?=.*[0-9])(?=.*[-_ ?!@#$%^&*\/\\])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9-_ ?!@#$%^&*\/\\]{8,30}$/;
-					if (input == document.getElementById("password").value && regex.test(input)) {
-						$('#password2').css("color", "green");
-						valid[3] = true;
-					} else {
-						$('#password2').css("color", "red");
-						valid[3] = false;
-					}
-					btnActive();
-				})
-
-			});
-			// Activate register button if all field are valid
-			function btnActive() {
-				if (valid.every(element => element === true)) {
-					document.getElementById("register-btn").classList.remove("disabled");
+		</div>
+	</section>
+	<script>
+		$('input').css("caret-color", "black");
+		let valid = [];
+		for (let i = 0; i < 4; i += 1) {
+			valid.push(false);
+		}
+		document.getElementById("register-btn").classList.add("disabled");
+		// Check nickname field
+		$(document).ready(function() {
+			$('#nickname').on('input', function() {
+				var regex = new RegExp("^[a-zA-Z0-9_-]+$");
+				var input = document.getElementById("nickname").value;
+				if (regex.test(input)) {
+					$('#nickname').css("color", "green");
+					valid[0] = true;
 				} else {
-					document.getElementById("register-btn").classList.add("disabled");
+					$('#nickname').css("color", "red");
+					valid[0] = false;
 				}
+				btnActive();
+			})
+		});
+		// Check email field
+		$(document).ready(function() {
+			$('#email').on('input', function() {
+				var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				var input = document.getElementById("email").value;
+				if (regex.test(input)) {
+					$('#email').css("color", "green");
+					valid[1] = true;
+				} else {
+					$('#email').css("color", "red");
+					valid[1] = false;
+				}
+				btnActive();
+			})
+		});
+		// Check password field
+		$(document).ready(function() {
+			$('#password').on('input', function() {
+				var regex = /^(?=.*[0-9])(?=.*[-_ ?!@#$%^&*\/\\])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9-_ ?!@#$%^&*\/\\]{8,30}$/;
+				var input = document.getElementById("password").value;
+				if (regex.test(input)) {
+					$('#password').css("color", "green");
+					valid[2] = true;
+				} else {
+					$('#password').css("color", "red");
+					valid[2] = false;
+				}
+				btnActive();
+			})
+		});
+		// Check password 2 field
+		$(document).ready(function() {
+			$('#password2').on('input', function() {
+				var input = document.getElementById("password2").value;
+				var regex = /^(?=.*[0-9])(?=.*[-_ ?!@#$%^&*\/\\])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9-_ ?!@#$%^&*\/\\]{8,30}$/;
+				if (input == document.getElementById("password").value && regex.test(input)) {
+					$('#password2').css("color", "green");
+					valid[3] = true;
+				} else {
+					$('#password2').css("color", "red");
+					valid[3] = false;
+				}
+				btnActive();
+			})
+
+		});
+		$(document).ready(function() {
+			$("input").on('blur', function() {
+				$("input").css("color", "black");
+			})
+		});
+
+		function btnActive() {
+			if (valid.every(element => element === true)) {
+				document.getElementById("register-btn").classList.remove("disabled");
+			} else {
+				document.getElementById("register-btn").classList.add("disabled");
 			}
-			// Function that clears all input values
-			function clearInput(){$('input').val('');}
-			
-			// Function that changes input style to color black on blur
-			$(document).ready(function() {
-				$('input').on('blur', function() {
-					$('input').css("color", "black");
-				})
-			});
-		</script>
-		<?php include("../pages/layouts/footer.php") ?>
-		
-	</body>
+		}
+	</script>
+	<?php include("../pages/layouts/footer.php") ?>
+</body>
+
 </html>
