@@ -208,10 +208,15 @@
 		
 		<!-- Section displayed when user not found -->
 		<section class=<?php if (!$set) {echo '"py-1 margin-main text-center"';} else {echo '"hide"';} ?> >
-			<?php if(TITLE=="Benvenuto su Quinidy") { echo "<img class='img-fluid' style='width: 100%; height:auto;' src='src/img/notfound.png'>"; } else { echo "<img src='../src/img/notfound.png'>"; } ?>
-			<div class="d-flex justify-content-center">
-				<h1 class="text-white text-center">L'utente <span style="color:yellow;"><?php echo ucfirst(strtolower($nickname))?></span> non esiste...</h1>
-			</div>
+			<?php
+				if(TITLE=="Benvenuto su Quinidy") { 
+					echo "<img style='width: 100%; max-width: 350px; height: auto;' src='src/img/notfound.png'>"; 
+				}
+				else { 
+					echo "<img style='width: 100%; max-width: 350px; height: auto;' src='../src/img/notfound.png'>"; 
+				} 
+			?>
+			<h1 class="text-white text-center mt-2">L'utente <span style="color:yellow;"><?php echo ucfirst(strtolower($nickname))?></span> non esiste...</h1>
 		</section>
 		
 		<?php include("../pages/layouts/footer.php") ?>

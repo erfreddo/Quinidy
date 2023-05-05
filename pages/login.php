@@ -8,6 +8,9 @@ if (isset($_SESSION['nickname'])) {
 	header("Location: mainpage.php");
 }
 
+$not_found = false;
+$error_message = "Email o password errate";
+
 if (isset($_POST['submit'])) {
 	$email = $_POST['email'];
 	$password = md5($_POST['password']);
@@ -18,6 +21,7 @@ if (isset($_POST['submit'])) {
 
 	$result = mysqli_query($conn, $sql);
 	if ($result->num_rows > 0) {
+		$not_found = false;
 		$row = mysqli_fetch_assoc($result);
 		$_SESSION['nickname'] = $row['nickname'];
 		$_SESSION['propic'] = $row['propic'];
@@ -25,14 +29,16 @@ if (isset($_POST['submit'])) {
 		$_SESSION['correct'] = $row['correct'];
 		header("Location: mainpage.php");
 	} else {
-		//<script> $('#myModal').modal('show'); </script> //"<script>alert('Email o password errate.')</script>";
+		$not_found = true;
 	}
 }
 ?>
 <!DOCTYPE html>
 <html lang="it">
 
-<head><?php include 'layouts/headTags.php'; include 'layouts/loginErrorModal.php'; ?></head>
+	<head>
+		<?php include 'layouts/headTags.php'; ?>
+	</head>
 
 	<body class="all-bg purple-bg d-flex flex-column min-vh-100">
 
@@ -52,10 +58,11 @@ if (isset($_POST['submit'])) {
 									<input type="email" class="form-control rounded-left" name="email" placeholder="Email" value="<?php echo $email; ?>" required>
 								</div>
 								<div class="form-group mb-3">
-									<input type="password" class="form-control rounded-left" name="password" placeholder="Password" value="<?php echo $_POST['password']; ?>" required>
+									<input type="password" class="form-control rounded-left mb-2" name="password" placeholder="Password" value="<?php echo $_POST['password']; ?>" required>
+									<p id="not-found" style='color:red;'><?php if($not_found) { echo $error_message; } else {echo "";}?></p>
 								</div>
 								<div class="text-md-right">
-									<p>Non hai un account? <a href="register.php" id="button">Registrati</a>.</p>
+									<p>Non hai un account? <a href="register.php" id="button">Registrati</a></p>
 								</div>
 								<div class="form-group d-flex justify-content-center">
 									<button type="submit" class="btn btn-hover color-3 rounded-pill submit" name="submit" id="button">Accedi</button>
@@ -66,8 +73,8 @@ if (isset($_POST['submit'])) {
 				</div>
 			</div>
 		</section>
+		
+		<?php include("layouts/footer.php") ?>
 
-		<?php include("../pages/layouts/footer.php") ?>
 	</body>
-
 </html>

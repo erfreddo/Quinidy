@@ -1,5 +1,5 @@
 /* Quinidy CSS */
-
+body{caret-color: black;}
 /* Star icon */
 .star {
 	color: yellow;
@@ -232,8 +232,6 @@
 	}
 }
 
-
-
 .orange-border-hover:hover{
 	outline: solid 5px #ef9d43;
 	outline-offset: -5px;
@@ -243,8 +241,6 @@
 	outline: solid 5px #ef9d43;
 	outline-offset: -5px;
 }
-
-
 
 .carousel-animation .carousel-item {
 	transform: none;
@@ -289,12 +285,56 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-
-/* stile dei controlli di campi di login e registrazione */
+/* Stile dei controlli di campi di login e registrazione */
 .glyphicon-remove {
 	color: red;
 }
 
 .glyphicon-ok {
 	color: green;
+}
+/* Password tooltip style */
+[data-tip] {
+	position:relative;
+}
+[data-tip]:before {
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid #713491;	
+	content:'';
+	display:none;
+	content:'';
+	position:absolute;
+	top:30px;
+	left:35px;
+	z-index:100;
+	font-size:0;
+	line-height:0;
+	width:0;
+	height:0;
+	animation: fadeIn 0.3s ease forwards;
+}
+[data-tip]:after {
+	content:attr(data-tip);
+	background: #713491;
+	display:none;
+	position:absolute;
+	top:35px;
+	left:0px;
+	z-index:9;
+	font-size: 15px;
+	line-height: 23px;
+    max-width: 430px;
+	height: auto;
+    word-wrap: break-word;
+	border-radius: 15px;
+	text-align: left;
+	padding-left: 13px;
+	padding-right: 5px;
+	font-size: 15px;
+	animation: fadeIn 0.3s ease forwards;
+}
+[data-tip]:hover:before,
+[data-tip]:hover:after {
+	display:block;
 }
